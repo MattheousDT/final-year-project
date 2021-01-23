@@ -1,0 +1,7 @@
+@import "./variables";
+
+.card {
+  @include borderRadius;
+  background-color: $dark-card;
+  padding: $padding-lg;
+}

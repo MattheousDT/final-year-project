@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "home": "Home",
+    "login": "Login",
+    "signup": "Sign up",
+    "expandMenu": "Expand menu",
+    "collapseMenu": "Collapse menu",
+    "settings": "Settings",
+    "myProfile": "My Profile"
+  },
+  "home": {
+    "title": "Finding Musicians",
+    "title2": "Simplified.",
+    "subtitle": "The platform for finding like-minded musicians to collaborate"
+  },
+  "ctas": {
+    "signUpNow": "Sign up now!",
+    "moreInfo": "More info",
+    "readMore": "Read more",
+    "viewAll": "View all"
+  },
+  "auth": {
+    "signupTitle": "Signup to {name}",
+    "loginTitle": "Login to {name}",
+    "email": "Email",
+    "password": "Password"
+  },
+  "listings": {
+    "myFeed": "My Feed",
+    "collaborations": "Collaborations",
+    "types": {
+      "cover": "Cover",
+      "original": "Original"
+    },
+    "listings": "Listings"
+  },
+  "roles": {
+    "drums": "Drums",
+    "guitar": "Guitar",
+    "bass": "Bass",
+    "piano": "Piano",
+    "keyboard": "Keyboard",
+    "vocals": "Vocals",
+    "mix": "Mix",
+    "mastering": "Mastering"
+  },
+  "firebaseErrors": {
+    "auth/user-not-found": "There is no user registered with this email.",
+    "auth/wrong-password": "You've entered the wrong password for this account.",
+    "auth/email-already-exists": "The provided email is already in use by an existing user.",
+    "auth/too-many-requests": "You're making too many requests. Try again later.",
+    "auth/session-cookie-expired": "The provided user session cookie is expired.",
+    "auth/session-cookie-revoked": "The user session cookie has been revoked.",
+    "auth/internal-error": "The Authentication server encountered an unexpected error while trying to process the request."
+  }
+}

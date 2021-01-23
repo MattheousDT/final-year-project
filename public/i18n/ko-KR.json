@@ -1,0 +1,56 @@
+{
+  "ctas": {
+    "moreInfo": "더 많은 정보",
+    "readMore": "더 읽어보기",
+    "signUpNow": "지금 등록하세요!",
+    "viewAll": "모두보기"
+  },
+  "home": {
+    "subtitle": "공동 작업 할 같은 생각을 가진 뮤지션을 찾기위한 플랫폼",
+    "title": "음악가 찾기",
+    "title2": "쉽게 한."
+  },
+  "nav": {
+    "home": "집",
+    "login": "로그인",
+    "signup": "가입하기",
+    "collapseMenu": "메뉴 접기",
+    "expandMenu": "메뉴 펼치기",
+    "myProfile": "내 프로필",
+    "settings": "설정"
+  },
+  "auth": {
+    "email": "이메일",
+    "password": "암호",
+    "signupTitle": "{name}에 가입",
+    "loginTitle": "{name}에 로그인"
+  },
+  "listings": {
+    "types": {
+      "cover": "덮개",
+      "original": "실물"
+    },
+    "collaborations": "협업",
+    "myFeed": "나의 먹이",
+    "listings": "리스팅"
+  },
+  "roles": {
+    "bass": "베이스",
+    "drums": "드럼",
+    "guitar": "기타",
+    "keyboard": "키보드",
+    "mastering": "마스터 링",
+    "mix": "혼합",
+    "piano": "피아노",
+    "vocals": "보컬"
+  },
+  "firebaseErrors": {
+    "auth/email-already-exists": "제공된 이메일은 이미 기존 사용자가 사용 중입니다.",
+    "auth/internal-error": "요청을 처리하는 동안 인증 서버에서 예기치 않은 오류가 발생했습니다.",
+    "auth/session-cookie-expired": "제공된 사용자 세션 쿠키가 만료되었습니다.",
+    "auth/session-cookie-revoked": "사용자 세션 쿠키가 취소되었습니다.",
+    "auth/too-many-requests": "너무 많은 요청을하고 있습니다. \n나중에 다시 시도하십시오.",
+    "auth/user-not-found": "이 이메일에 등록 된 사용자가 없습니다.",
+    "auth/wrong-password": "이 계정에 잘못된 비밀번호를 입력했습니다."
+  }
+}

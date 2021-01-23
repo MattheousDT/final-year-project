@@ -1,0 +1,87 @@
+@import "./variables";
+
+.button {
+  @include borderRadius;
+  @include focusShadow($primary);
+  @include hoverBackground;
+
+  display: inline-block;
+  padding: 9px $padding;
+  background-color: $dark-card-trans;
+  color: $white;
+  border: none;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.75;
+  appearance: none;
+  cursor: pointer;
+  transition: background 200ms ease;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:hover {
+      background-color: $dark-card-trans;
+    }
+  }
+
+  &--lg {
+    padding: 9px $padding-lg;
+  }
+
+  &--outline {
+    @include focusShadow($white);
+    background: none;
+    border: $white 2px solid;
+  }
+
+  &--blur {
+    backdrop-filter: blur(5px);
+  }
+
+  &--gradient {
+    background: $gradient;
+
+    &:hover {
+      background-blend-mode: difference;
+    }
+  }
+
+  &--grey {
+    @include focusShadow($grey);
+    background-color: $grey;
+  }
+
+  &--flat {
+    background-color: transparent;
+
+    &:focus {
+      @include focusBackground;
+      box-shadow: none;
+    }
+  }
+
+  &--image {
+    display: flex;
+    align-items: center;
+    padding-left: 9px;
+
+    img {
+      width: 32px;
+      height: 32px;
+      object-fit: cover;
+      margin-right: 15px;
+      border-radius: $radius-sm;
+    }
+  }
+
+  &--icon {
+    display: flex;
+    align-items: center;
+    img {
+      margin-right: 15px;
+    }
+  }
+}

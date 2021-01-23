@@ -1,0 +1,24 @@
+@import "./variables";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  overflow: hidden;
+
+  margin: 0;
+  background-color: $dark-background;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+main {
+  flex: 1;
+}

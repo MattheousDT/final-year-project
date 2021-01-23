@@ -1,0 +1,126 @@
+// Colours
+$black: #22252b;
+$white: #ffffff;
+$grey: #474546;
+
+$primary: #e54cc9;
+$secondary: #a166e1;
+$tertiary: #5d6efc;
+$subtext: #959192;
+
+$error: #ff7a7a;
+
+$gradient: linear-gradient(135deg, $primary 0%, $secondary 100%);
+
+// Dark Mode
+$dark-background: #1a1819;
+$dark-card: #232122;
+$dark-card-trans: rgba($grey, 0.2);
+$dark-border: #2a2829;
+$dark-hover: rgba($grey, 0.5);
+$dark-text: $dark-background;
+
+$padding: 15px;
+$padding-lg: $padding * 2;
+$radius: 10px;
+$radius-sm: $radius / 2;
+$radius-lg: $radius * 2;
+
+@mixin shadow($color) {
+  outline: none;
+  box-shadow: 0px 0px 0px 2px rgba($color, 0.5);
+}
+
+@mixin focusShadow($color) {
+  &:focus {
+    @include shadow($color);
+  }
+}
+
+@mixin focusBackground {
+  &:focus {
+    outline: none;
+    background-color: $dark-card-trans;
+  }
+}
+
+@mixin hoverBackground {
+  transition: background-color 50ms ease;
+  &:hover {
+    background-color: $dark-hover;
+  }
+}
+
+@mixin borderRadius {
+  border-radius: $radius;
+}
+
+@mixin borderRadiusSm {
+  border-radius: $radius;
+}
+
+$breakpoints: (
+  "sm": (
+    min-width: 576px,
+  ),
+  "md": (
+    min-width: 768px,
+  ),
+  "lg": (
+    min-width: 992px,
+  ),
+  "xl": (
+    min-width: 1200px,
+  ),
+  "xxl": (
+    min-width: 1380px,
+  ),
+  "xxxl": (
+    min-width: 2050px,
+  ),
+) !default;
+
+$breakpoints-down: (
+  "xs": (
+    max-width: 575.98px,
+  ),
+  "sm": (
+    max-width: 767.98px,
+  ),
+  "md": (
+    max-width: 991.98px,
+  ),
+  "lg": (
+    max-width: 1199.98px,
+  ),
+  "xl": (
+    max-width: 1379.98px,
+  ),
+  "xxl": (
+    max-width: 2049.98px,
+  ),
+) !default;
+
+$breakpoint-values: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) !default;
+
+@mixin media-up($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+@mixin media-down($breakpoint) {
+  @if map-has-key($breakpoints-down, $breakpoint) {
+    @media #{inspect(map-get($breakpoints-down, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}

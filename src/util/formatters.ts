@@ -1,0 +1,20 @@
+import type { ILocale } from "./constants";
+
+export const formatCurrency = (
+  locale: ILocale,
+  languageCode: string,
+  amount: number,
+  removeDecimal?: boolean
+) =>
+  new Intl.NumberFormat(languageCode, {
+    style: "currency",
+    currency: locale.currency,
+    minimumFractionDigits: removeDecimal ? 0 : 2,
+  }).format(amount / 100);
+
+export const formatDate = (languageCode: string, date: Date) =>
+  new Intl.DateTimeFormat(languageCode, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(date);

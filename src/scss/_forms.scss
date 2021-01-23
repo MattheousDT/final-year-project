@@ -1,0 +1,36 @@
+@import "./variables";
+
+input {
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    background-color: $dark-card-trans;
+    color: $white;
+  }
+}
+
+.form {
+  &__text {
+    display: flex;
+    flex-direction: column;
+    margin: $padding 0;
+
+    label {
+      text-align: left;
+      font-weight: 600;
+    }
+
+    input {
+      @include borderRadius;
+      @include focusShadow($primary);
+
+      padding: $padding $padding;
+      font-size: 1rem;
+      background-color: $dark-card-trans;
+      border: none;
+      color: $white;
+      font-family: "Exo", sans-serif;
+    }
+  }
+}

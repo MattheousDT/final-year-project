@@ -1,0 +1,75 @@
+@import "./variables";
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  padding-right: $padding;
+  padding-left: $padding;
+  margin-right: auto;
+  margin-left: auto;
+
+  &.relative {
+    position: relative;
+  }
+
+  &--full {
+    max-width: 100% !important;
+    padding: 0 $padding * 4;
+
+    @include media-down(xl) {
+      padding: 0 $padding * 2;
+    }
+
+    @include media-down(sm) {
+      padding: 0 $padding;
+    }
+  }
+
+  @include media-up(sm) {
+    max-width: 540px;
+  }
+  @include media-up(md) {
+    max-width: 720px;
+  }
+  @include media-up(lg) {
+    max-width: 960px;
+  }
+  @include media-up(xl) {
+    max-width: 1140px;
+  }
+  @include media-up(xxl) {
+    max-width: 1440px;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -$padding;
+  margin-right: -$padding;
+}
+
+.col,
+[class*="col-"] {
+  padding: 0 $padding;
+}
+
+// Col Default Sizes
+@each $breakpoint-value in $breakpoint-values {
+  .col-#{$breakpoint-value} {
+    max-width: (100% / 12) * $breakpoint-value;
+    flex: 0 0 ((100% / 12) * $breakpoint-value);
+  }
+}
+
+// Col breakpoint sizes
+@each $breakpoint in map-keys($breakpoints) {
+  @each $breakpoint-value in $breakpoint-values {
+    @include media-up($breakpoint) {
+      .col-#{$breakpoint}-#{$breakpoint-value} {
+        max-width: (100% / 12) * $breakpoint-value;
+        flex: 0 0 ((100% / 12) * $breakpoint-value);
+      }
+    }
+  }
+}
