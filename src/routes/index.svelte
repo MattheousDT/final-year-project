@@ -36,7 +36,7 @@
           </h1>
           <h5 class="text--sub text--semi-bold">{$_("home.subtitle")}</h5>
           <div class="jumbotron__buttons">
-            <a href="/auth/signup" class="button button--lg button--gradient"
+            <a href="/signup" class="button button--lg button--gradient"
               >{$_("ctas.signUpNow")}</a
             >
             <a href="/components" class="button button--lg button--grey"

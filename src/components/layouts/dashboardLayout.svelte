@@ -14,7 +14,7 @@
 
 <!-- <Footer /> -->
 <style lang="scss">
-  @import "../scss/variables";
+  @import "../../scss/variables";
 
   main {
     display: flex;

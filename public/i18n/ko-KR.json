@@ -3,7 +3,9 @@
     "moreInfo": "더 많은 정보",
     "readMore": "더 읽어보기",
     "signUpNow": "지금 등록하세요!",
-    "viewAll": "모두보기"
+    "viewAll": "모두보기",
+    "letsGo": "가자!",
+    "next": "다음"
   },
   "home": {
     "subtitle": "공동 작업 할 같은 생각을 가진 뮤지션을 찾기위한 플랫폼",
@@ -52,5 +54,31 @@
     "auth/too-many-requests": "너무 많은 요청을하고 있습니다. \n나중에 다시 시도하십시오.",
     "auth/user-not-found": "이 이메일에 등록 된 사용자가 없습니다.",
     "auth/wrong-password": "이 계정에 잘못된 비밀번호를 입력했습니다."
+  },
+  "forms": {
+    "bio": "약력",
+    "dob": "생년월일",
+    "forename": "이름",
+    "genres": "장르",
+    "location": "위치",
+    "roles": "역할",
+    "surname": "성",
+    "username": "사용자 이름"
+  },
+  "onboarding": {
+    "50%": "와우 ... 반쯤 왔어요!",
+    "75%": "이제 마지막 카운트 다운이야!",
+    "basicInformation": "기본 정보",
+    "bio": "자신에 대해 조금 알려주세요",
+    "finishBold": "이제 사용 가능한 목록을 검색하고 즉시 공동 작업을 시작할 수 있습니다!",
+    "finishParagraph": "잊지 마세요. 사이드 바에서 사진을 클릭하고 프로필 페이지에서 수정을 클릭하여 프로필을 추가로 맞춤 설정할 수 있습니다. \n예를 들어, 이전 프로젝트의 포트폴리오를 추가하여 프로필을 돋보이게 만들 수 있습니다!",
+    "finishPre": "좋은 소식...",
+    "finishTitle": "귀하의 계정을 사용할 준비가되었습니다!",
+    "genres": "어떤 장르를 좋아하세요?",
+    "hey": "야!",
+    "heyName": "안녕 {name}!",
+    "musicalInformation": "뮤지컬 정보",
+    "roles": "어떤 역할을 할 수 있습니까?",
+    "title": "프로필을 마무리합시다"
   }
 }

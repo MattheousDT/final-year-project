@@ -3,6 +3,7 @@
   import { link } from "svelte-routing";
 
   import { userPrefs } from "../stores/preferences";
+  import { profile } from "../stores/profile";
   import { user } from "../stores/user";
 
   let location = typeof window !== "undefined" ? window.location.pathname : "";
@@ -47,7 +48,7 @@
               "https://www.streamscheme.com/wp-content/uploads/2020/09/PogU.png"}
             alt=""
           />
-          <p>{$user?.displayName || $user?.email}</p>
+          <p>{"" || $profile?.username}</p>
         </button>
       </li>
     </ul>

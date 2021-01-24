@@ -11,7 +11,8 @@ input {
 }
 
 .form {
-  &__text {
+  &__text,
+  &__text-area {
     display: flex;
     flex-direction: column;
     margin: $padding 0;
@@ -31,6 +32,22 @@ input {
       border: none;
       color: $white;
       font-family: "Exo", sans-serif;
+    }
+
+    textarea {
+      @include borderRadius;
+      @include focusShadow($primary);
+
+      padding: $padding $padding;
+      font-size: 1rem;
+      background-color: $dark-card-trans;
+      border: none;
+      color: $white;
+      font-family: "Exo", sans-serif;
+      resize: vertical;
+      &::-webkit-resizer {
+        appearance: none;
+      }
     }
   }
 }

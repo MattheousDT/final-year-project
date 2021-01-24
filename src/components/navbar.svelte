@@ -55,15 +55,12 @@
         </li>
       {:else}
         <li>
-          <a class="button button--flat" href="/auth/login" use:link>
+          <a class="button button--flat" href="/login" use:link>
             {$_("nav.login")}
           </a>
         </li>
         <li>
-          <a
-            class="button button--lg button--blur"
-            href="/auth/signup"
-            use:link>
+          <a class="button button--lg button--blur" href="/signup" use:link>
             {$_("nav.signup")}
           </a>
         </li>

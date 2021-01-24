@@ -6,6 +6,7 @@
   import Dots from "../../svg/dots.svg";
   import { auth } from "../../firebase";
   import { APP_NAME } from "../../util/constants";
+  import { getProfile } from "../../util/db";
 
   let email: string;
   let password: string;
@@ -22,7 +23,7 @@
     try {
       error = null;
       await auth.createUserWithEmailAndPassword(email, password);
-      navigate("/dashboard/feed");
+      navigate("/onboarding");
     } catch (err) {
       error = $_(`firebaseErrors.${err.code}`);
     }
@@ -31,8 +32,13 @@
   const signInWithGoogle = async () => {
     try {
       error = null;
-      await auth.signInWithPopup(provider);
-      navigate("/dashboard/feed");
+      const google = await auth.signInWithPopup(provider);
+      const profile = await getProfile(google.user.uid);
+      if (profile) {
+        navigate("/dashboard/feed");
+      } else {
+        navigate("/onboarding");
+      }
     } catch (err) {
       error = $_(`firebaseErrors.${err.code}`);
     }

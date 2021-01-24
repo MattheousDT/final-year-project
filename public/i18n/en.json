@@ -17,7 +17,9 @@
     "signUpNow": "Sign up now!",
     "moreInfo": "More info",
     "readMore": "Read more",
-    "viewAll": "View all"
+    "viewAll": "View all",
+    "next": "Next",
+    "letsGo": "Let's go!"
   },
   "auth": {
     "signupTitle": "Signup to {name}",
@@ -52,5 +54,31 @@
     "auth/session-cookie-expired": "The provided user session cookie is expired.",
     "auth/session-cookie-revoked": "The user session cookie has been revoked.",
     "auth/internal-error": "The Authentication server encountered an unexpected error while trying to process the request."
+  },
+  "forms": {
+    "username": "Username",
+    "forename": "Forename",
+    "surname": "Surname",
+    "dob": "Date of Birth",
+    "location": "Location",
+    "bio": "Bio",
+    "roles": "Roles",
+    "genres": "Genres"
+  },
+  "onboarding": {
+    "heyName": "Hey {name}!",
+    "hey": "Hey!",
+    "title": "Let's finish your profile",
+    "basicInformation": "Basic Information",
+    "musicalInformation": "Musical Information",
+    "bio": "Tell us a bit about yourself",
+    "roles": "What roles can you play?",
+    "genres": "What genres do you like?",
+    "50%": "Woah... We're halfway there!",
+    "75%": "It's the final countdown!",
+    "finishPre": "Good news...",
+    "finishTitle": "Your account is ready to go!",
+    "finishBold": "You can now search through the available listings and start collaborating immediately!",
+    "finishParagraph": "Don’t forget, you can customise your profile further by clicking on your photo on the sidebar and clicking edit on your profile page. For example, you can add a portfolio of your previous projects to make your profile pop!"
   }
 }

@@ -12,6 +12,10 @@
     position: relative;
   }
 
+  &--small {
+    max-width: 850px !important;
+  }
+
   &--full {
     max-width: 100% !important;
     padding: 0 $padding * 4;

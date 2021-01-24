@@ -5,12 +5,8 @@ import "firebase/auth";
 // import "firebase/analytics";
 
 import firebaseConfig from "./config/firebase.config.json";
-import { user } from "./stores/user";
 
 firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();
-
-auth.onAuthStateChanged((e) => {
-  user.set(e);
-});
+export const db = firebase.firestore();
