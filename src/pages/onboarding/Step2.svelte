@@ -1,8 +1,6 @@
 <script lang="ts">
   import { _ } from "svelte-i18n";
-
-  import { Role } from "../../types/listings";
-  import { Genre } from "../../types/profile";
+  import { Genre, Role } from "../../util/enums";
 
   export let forename: string;
   export let bio: string,

@@ -1,7 +1,6 @@
 <script lang="ts">
   import { _ } from "svelte-i18n";
-  import DashboardLayout from "../../components/layouts/dashboardLayout.svelte";
-  import Listing from "../../components/listings/listing.svelte";
+  import DashboardLayout from "../../components/layouts/DashboardLayout.svelte";
   import { APP_NAME } from "../../util/constants";
 </script>
 

@@ -1,14 +1,15 @@
 <script lang="ts">
   import { _ } from "svelte-i18n";
-  import Navbar from "../../components/navbar.svelte";
+  import Navbar from "../../components/Navbar.svelte";
   import { APP_NAME } from "../../util/constants";
-  import { user } from "../../stores/user";
-  import type { Role } from "../../types/listings";
-  import type { Genre } from "../../types/profile";
+  import Step1 from "./Step1.svelte";
+  import Step2 from "./Step2.svelte";
+  import Step3 from "./Step3.svelte";
+  import type { Genre, Role } from "../../util/enums";
   import { db } from "../../firebase";
-  import Step1 from "./step1.svelte";
-  import Step2 from "./step2.svelte";
-  import Step3 from "./step3.svelte";
+  import { user } from "../../stores/user";
+  import { getProfileFromDb } from "../../util/db";
+  import { profile } from "../../stores/profile";
 
   let stage = 1;
 
@@ -17,23 +18,26 @@
   //stage 2
   let bio: string, roles: Role[], genres: Genre[];
 
-  // $: {
-  //   if (stage === 3) {
-  //     console.log(forename, surname, dob, location, bio, roles, genres);
-  //     db.collection("users")
-  //       .doc($user.uid)
-  //       .set({
-  //         forename,
-  //         surname,
-  //         dob: new Date(dob),
-  //         location,
-  //         bio,
-  //         roles,
-  //         genres,
-  //       })
-  //       .then((e) => alert("yay"));
-  //   }
-  // }
+  $: {
+    if (stage === 3) {
+      db.collection("users")
+        .doc($user.uid)
+        .set({
+          forename,
+          surname,
+          dob: new Date(dob),
+          location,
+          bio,
+          roles,
+          genres,
+        })
+        .then(async () => {
+          const data = await getProfileFromDb($user.uid);
+          profile.set(data);
+          stage = 4;
+        });
+    }
+  }
 </script>
 
 <svelte:head>
@@ -59,8 +63,10 @@
             />
           {:else if stage === 2}
             <Step2 {forename} bind:bio bind:roles bind:genres bind:stage />
-          {:else if stage === 3}
+          {:else if stage === 4}
             <Step3 />
+          {:else}
+            <p>loading</p>
           {/if}
         </div>
       </div>

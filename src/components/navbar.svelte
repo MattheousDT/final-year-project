@@ -4,8 +4,9 @@
 
   import { user } from "../stores/user";
   import { LANGUAGES } from "../util/constants";
-  import LanguagePicker from "./modals/languagePicker.svelte";
+  import LanguagePicker from "./LanguagePicker.svelte";
   import { auth } from "../firebase";
+  import { profile } from "../stores/profile";
 
   export let hideLogo = false;
 
@@ -34,7 +35,8 @@
       <li>
         <button
           on:click={() => (langVisiblity = !langVisiblity)}
-          class="button button--flat button--icon">
+          class="button button--flat button--icon"
+        >
           <img src="/static/icons/globe.svg" alt="" />{LANGUAGES[$locale]}
         </button>
       </li>
@@ -44,13 +46,14 @@
             href="/dashboard/feed"
             use:link
             on:contextmenu={() => auth.signOut()}
-            class="button button--blur button--image">
+            class="button button--blur button--image"
+          >
             <img
-              src={$user?.photoURL ??
+              src={$user.photoURL ??
                 "https://www.streamscheme.com/wp-content/uploads/2020/09/PogU.png"}
               alt=""
             />
-            {$user.displayName || $user.email}
+            {$profile?.getFullName() || $user?.displayName || $user?.email}
           </a>
         </li>
       {:else}

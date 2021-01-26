@@ -2,10 +2,11 @@
   import firebase from "firebase";
   import { navigate } from "svelte-routing";
   import { locale, _ } from "svelte-i18n";
-  import Navbar from "../../components/navbar.svelte";
+  import Navbar from "../../components/Navbar.svelte";
   import Dots from "../../svg/dots.svg";
   import { auth } from "../../firebase";
   import { APP_NAME } from "../../util/constants";
+  import { getProfileFromDb } from "../../util/db";
 
   let email: string;
   let password: string;
@@ -31,8 +32,13 @@
   const signInWithGoogle = async () => {
     try {
       error = null;
-      await auth.signInWithPopup(provider);
-      navigate("/dashboard/feed");
+      const google = await auth.signInWithPopup(provider);
+      const profile = await getProfileFromDb(google.user.uid);
+      if (profile) {
+        navigate("/dashboard/feed");
+      } else {
+        navigate("/onboarding");
+      }
     } catch (err) {
       error = $_(`firebaseErrors.${err.code}`);
     }
@@ -77,7 +83,8 @@
                 <button
                   on:click={signInWithGoogle}
                   type="button"
-                  class="button button--icon">
+                  class="button button--icon"
+                >
                   <img src="/static/icons/google.svg" alt="" />
                 </button>
               </div>

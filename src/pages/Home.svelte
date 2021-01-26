@@ -1,9 +1,8 @@
 <script lang="ts">
   import { _ } from "svelte-i18n";
-  import Laptop from "../components/decorations/laptop.svelte";
-  import Mobile from "../components/decorations/mobile.svelte";
-  import Music from "../components/music.svelte";
-  import Navbar from "../components/navbar.svelte";
+  import Laptop from "../components/decorations/Laptop.svelte";
+  import Mobile from "../components/decorations/Mobile.svelte";
+  import Navbar from "../components/Navbar.svelte";
   import Dots from "../svg/dots.svg";
   import { APP_NAME } from "../util/constants";
 

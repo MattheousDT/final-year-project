@@ -1,8 +1,8 @@
 <script lang="ts">
-  export let image: string;
-  export let video: string;
-  export let className: string;
-  export let style: string;
+  export let image: string = null;
+  export let video: string = null;
+  export let className: string = null;
+  export let style: string = null;
 </script>
 
 <div class="laptop {className}" {style}>
@@ -35,7 +35,7 @@
 </div>
 
 <style lang="scss">
-  @import "../scss/variables";
+  @import "../../scss/variables";
 
   .laptop {
     display: inline-block;

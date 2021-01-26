@@ -1,8 +1,8 @@
 <script lang="ts">
-  export let image: string;
-  export let video: string;
-  export let className: string;
-  export let style: string;
+  export let image: string = null;
+  export let video: string = null;
+  export let className: string = null;
+  export let style: string = null;
 </script>
 
 <div class="mobile {className}" {style}>
@@ -21,7 +21,8 @@
     height="363"
     viewBox="0 0 182 363"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg">
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       fill-rule="evenodd"
       clip-rule="evenodd"
@@ -32,7 +33,7 @@
 </div>
 
 <style lang="scss">
-  @import "../scss/variables";
+  @import "../../scss/variables";
 
   .mobile {
     position: relative;

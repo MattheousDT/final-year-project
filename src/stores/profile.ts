@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
-import type { IProfile } from "../types/profile";
+import type { Profile } from "../models/Profile";
 
-export const profile = writable<IProfile>(null);
+export const profile = writable<Profile>(null);
 
 profile.subscribe(console.log);

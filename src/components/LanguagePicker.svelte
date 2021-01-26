@@ -1,7 +1,7 @@
 <script lang="ts">
   import { locale, _ } from "svelte-i18n";
   import { fade, fly } from "svelte/transition";
-  import { LANGUAGES } from "../../util/constants";
+  import { LANGUAGES } from "../util/constants";
 
   export let visibility: boolean;
 </script>
@@ -16,8 +16,8 @@
 
 <div
   class="background"
-  on:click|self={(e) => (visibility = false)}
-  transition:fade
+  on:click|self={() => (visibility = false)}
+  transition:fade={{}}
 >
   <div class="modal" role="dialog" transition:fly={{ y: -50 }}>
     <div class="header">
@@ -29,7 +29,8 @@
           <button
             on:click={() => locale.set(key)}
             class:button--gradient={key === $locale}
-            class="button">
+            class="button"
+          >
             {val}
           </button>
         </div>
@@ -39,7 +40,7 @@
 </div>
 
 <style lang="scss">
-  @import "../../scss/variables";
+  @import "../scss/variables";
 
   .background {
     position: fixed;

@@ -1,9 +1,14 @@
 import { db } from "../firebase";
-import type { IProfile } from "../types/profile";
+import { plainToClass } from "class-transformer";
+import { Profile } from "../models/Profile";
 
-export const getProfile = async (userId: string) =>
+export const getProfileFromDb = async (userId: string) =>
   db
     .collection("users")
     .doc(userId)
     .get()
-    .then((e) => e.data() as IProfile);
+    .then((e) =>
+      e.data()
+        ? plainToClass(Profile, { ...e.data(), dob: e.data().dob.toDate() })
+        : null
+    );

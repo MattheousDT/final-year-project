@@ -1,8 +1,8 @@
 <script lang="ts">
   import { _ } from "svelte-i18n";
-  import DashboardLayout from "../../components/layouts/dashboardLayout.svelte";
-  import Listing from "../../components/listings/listing.svelte";
-  import { ListingType, Role } from "../../types/listings";
+  import DashboardLayout from "../../components/layouts/DashboardLayout.svelte";
+  import Listing from "../../components/listings/Listing.svelte";
+  import { ListingType, Role } from "../../util/enums";
   import { APP_NAME } from "../../util/constants";
 
   let listings = [

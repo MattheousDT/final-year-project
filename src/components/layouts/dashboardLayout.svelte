@@ -1,6 +1,6 @@
 <script>
-  import Navbar from "../navbar.svelte";
-  import Sidebar from "../sidebar.svelte";
+  import Navbar from "../Navbar.svelte";
+  import Sidebar from "../Sidebar.svelte";
 </script>
 
 <Navbar hideLogo />

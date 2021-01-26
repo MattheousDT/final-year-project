@@ -48,7 +48,7 @@
               "https://www.streamscheme.com/wp-content/uploads/2020/09/PogU.png"}
             alt=""
           />
-          <p>{"" || $profile?.username}</p>
+          <p>{$profile?.getFullName() || $user?.displayName || $user?.email}</p>
         </button>
       </li>
     </ul>
