@@ -2,11 +2,11 @@
   import { link } from "svelte-routing";
   import { locale, _ } from "svelte-i18n";
 
-  import { user } from "../stores/user";
-  import { LANGUAGES } from "../util/constants";
+  import { user } from "@stores/user";
+  import { LANGUAGES } from "@utils/constants";
   import LanguagePicker from "./LanguagePicker.svelte";
   import { auth } from "../firebase";
-  import { profile } from "../stores/profile";
+  import { profile } from "@stores/profile";
 
   export let hideLogo = false;
 
@@ -53,7 +53,7 @@
                 "https://www.streamscheme.com/wp-content/uploads/2020/09/PogU.png"}
               alt=""
             />
-            {$profile?.getFullName() || $user?.displayName || $user?.email}
+            {$profile?.displayName || $user?.displayName || $user?.email}
           </a>
         </li>
       {:else}
@@ -78,6 +78,10 @@
 
 <style lang="scss">
   @import "../scss/variables";
+
+  header {
+    z-index: 1;
+  }
 
   nav {
     height: 82px;

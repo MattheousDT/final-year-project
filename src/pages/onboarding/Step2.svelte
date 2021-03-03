@@ -1,6 +1,6 @@
 <script lang="ts">
   import { _ } from "svelte-i18n";
-  import { Genre, Role } from "../../util/enums";
+  import { Genre, Role } from "@utils/enums";
 
   export let forename: string;
   export let bio: string,
@@ -19,7 +19,7 @@
     : $_("onboarding.hey")}
 </h4>
 <h2>{$_("onboarding.title")}</h2>
-<strong>{$_("onboarding.75%")}</strong>
+<strong>{$_("onboarding.nearly")}</strong>
 <br />
 <progress class="progress" max={100} value={75} />
 <form on:submit|preventDefault={handleNext}>

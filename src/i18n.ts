@@ -7,7 +7,7 @@ import {
 } from "svelte-i18n";
 import { get, Readable } from "svelte/store";
 
-import { setCookie, getCookie } from "./util/cookie";
+import { setCookie, getCookie } from "@utils/cookie";
 
 const INIT_OPTIONS = {
   fallbackLocale: "en",
@@ -19,6 +19,7 @@ const INIT_OPTIONS = {
 let currentLocale = null;
 
 register("en", () => fetch("/i18n/en.json").then((e) => e.json()));
+register("es", () => fetch("/i18n/es.json").then((e) => e.json()));
 register("ko-KR", () => fetch("/i18n/ko-KR.json").then((e) => e.json()));
 
 // TODO: Add/Remove Languages

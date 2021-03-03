@@ -67,6 +67,14 @@ small {
   color: $subtext;
 }
 
+.text--normal {
+  font-weight: 400;
+}
+
 .text--semi-bold {
   font-weight: 600;
+}
+
+.text--no-margin {
+  margin: 0;
 }

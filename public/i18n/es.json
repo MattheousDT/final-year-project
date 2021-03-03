@@ -1,0 +1,87 @@
+{
+  "auth": {
+    "email": "Correo electrónico",
+    "loginTitle": "Iniciar sesión en {name}",
+    "password": "Contraseña",
+    "signupTitle": "Regístrese en {name}"
+  },
+  "ctas": {
+    "letsGo": "¡Vamos!",
+    "moreInfo": "Más información",
+    "next": "Próximo",
+    "readMore": "Leer más",
+    "selectALanguage": "Selecciona un idioma",
+    "signUpNow": "¡Regístrate ahora!",
+    "viewAll": "Ver todo"
+  },
+  "firebaseErrors": {
+    "auth/email-already-exists": "El correo electrónico proporcionado ya está siendo utilizado por un usuario existente.",
+    "auth/internal-error": "El servidor de autenticación encontró un error inesperado al intentar procesar la solicitud.",
+    "auth/session-cookie-expired": "La cookie de sesión de usuario proporcionada ha caducado.",
+    "auth/session-cookie-revoked": "La cookie de sesión de usuario ha sido revocada.",
+    "auth/too-many-requests": "Estás haciendo demasiadas solicitudes. \nVuelve a intentarlo más tarde.",
+    "auth/user-not-found": "No hay ningún usuario registrado con este correo electrónico.",
+    "auth/wrong-password": "Ingresó la contraseña incorrecta para esta cuenta."
+  },
+  "forms": {
+    "bio": "Bio",
+    "dob": "Fecha de nacimiento",
+    "forename": "Nombre",
+    "genres": "Géneros",
+    "location": "Localización",
+    "roles": "Roles",
+    "showFullName": "Mostrar mi nombre completo en mi perfil",
+    "surname": "Apellido",
+    "username": "Nombre de usuario"
+  },
+  "home": {
+    "subtitle": "La plataforma para encontrar músicos afines para colaborar",
+    "title": "Encontrar músicos",
+    "title2": "Simplificado."
+  },
+  "listings": {
+    "collaborations": "Colaboraciones",
+    "listings": "Listados",
+    "myFeed": "Mi feed",
+    "types": {
+      "cover": "Cubrir",
+      "original": "Original"
+    }
+  },
+  "nav": {
+    "collapseMenu": "Contraer menú",
+    "expandMenu": "Expandir el menú",
+    "home": "Hogar",
+    "login": "Acceso",
+    "myProfile": "Mi perfil",
+    "settings": "Ajustes",
+    "signOut": "Desconectar",
+    "signup": "Inscribirse"
+  },
+  "onboarding": {
+    "basicInformation": "Información básica",
+    "bio": "Cuéntanos un poco sobre ti",
+    "finishBold": "¡Ahora puede buscar en los listados disponibles y comenzar a colaborar de inmediato!",
+    "finishParagraph": "No lo olvides, puedes personalizar aún más tu perfil haciendo clic en tu foto en la barra lateral y haciendo clic en editar en tu página de perfil. \nPor ejemplo, puede agregar un portafolio de sus proyectos anteriores para hacer que su perfil destaque.",
+    "finishPre": "Buenas noticias...",
+    "finishTitle": "¡Tu cuenta está lista para funcionar!",
+    "genres": "¿Qué géneros te gustan?",
+    "half": "Woah ... ¡Estamos a mitad de camino!",
+    "hey": "¡Oye!",
+    "heyName": "¡Hola, {nombre}!",
+    "musicalInformation": "Información musical",
+    "nearly": "¡Es la cuenta final!",
+    "roles": "¿Qué roles puedes jugar?",
+    "title": "Terminemos tu perfil"
+  },
+  "roles": {
+    "bass": "Bajo",
+    "drums": "Batería",
+    "guitar": "Guitarra",
+    "keyboard": "Teclado",
+    "mastering": "Masterización",
+    "mix": "Mezcla",
+    "piano": "Piano",
+    "vocals": "Voz"
+  }
+}

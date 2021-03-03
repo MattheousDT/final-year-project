@@ -1,10 +1,11 @@
 <script lang="ts">
   import { _ } from "svelte-i18n";
-  import { link } from "svelte-routing";
+  import { link, navigate } from "svelte-routing";
+  import { auth } from "../firebase";
 
-  import { userPrefs } from "../stores/preferences";
-  import { profile } from "../stores/profile";
-  import { user } from "../stores/user";
+  import { userPrefs } from "@stores/preferences";
+  import { profile } from "@stores/profile";
+  import { user } from "@stores/user";
 
   let location = typeof window !== "undefined" ? window.location.pathname : "";
 
@@ -30,6 +31,11 @@
       icon: "cog",
       route: "/dashboard/settings",
     },
+    {
+      name: $_("nav.signOut"),
+      icon: "signout",
+      cb: () => auth.signOut().then(() => navigate("/")),
+    },
   ];
 </script>
 
@@ -39,31 +45,48 @@
   </a>
   <div class="profile">
     <ul>
-      <li>
-        <button
+      <li class:active={location === `/dashboard/profile/${$user?.uid}`}>
+        <a
+          use:link
+          href="/dashboard/profile/{$user?.uid}"
           class="nav-button nav-button--img"
-          aria-label={$_("nav.myProfile")}>
+          aria-label={$_("nav.myProfile")}
+        >
           <img
             src={$user?.photoURL ??
               "https://www.streamscheme.com/wp-content/uploads/2020/09/PogU.png"}
             alt=""
           />
-          <p>{$profile?.getFullName() || $user?.displayName || $user?.email}</p>
-        </button>
+          <p>
+            {$profile?.displayName || $user?.displayName || $user?.email}
+          </p>
+        </a>
       </li>
     </ul>
   </div>
   <ul class="main">
     {#each routes as r}
       <li class:active={location.startsWith(r.route)}>
-        <a
-          use:link
-          href={r.route}
-          class="nav-button nav-button--icon"
-          aria-label={r.name}>
-          <img src="/static/icons/{r.icon}.svg" alt="" />
-          <p>{r.name}</p>
-        </a>
+        {#if r.cb}
+          <button
+            on:click={r.cb}
+            class="nav-button nav-button--icon"
+            aria-label={r.name}
+          >
+            <img src="/static/icons/{r.icon}.svg" alt="" />
+            <p>{r.name}</p>
+          </button>
+        {:else}
+          <a
+            use:link
+            href={r.route}
+            class="nav-button nav-button--icon"
+            aria-label={r.name}
+          >
+            <img src="/static/icons/{r.icon}.svg" alt="" />
+            <p>{r.name}</p>
+          </a>
+        {/if}
       </li>
     {/each}
   </ul>
@@ -74,7 +97,8 @@
           class="nav-button nav-button--icon"
           aria-label={$userPrefs.sidebarExpanded
             ? $_("nav.collapseMenu")
-            : $_("nav.expandMenu")}>
+            : $_("nav.expandMenu")}
+        >
           <img src="/static/icons/arrows.svg" alt="" />
           <p>{$_("nav.collapseMenu")}</p>
         </button>
@@ -196,6 +220,7 @@
     top: $padding-lg;
     left: 28px;
     width: 45px;
+    z-index: 1;
   }
 
   .expanded {

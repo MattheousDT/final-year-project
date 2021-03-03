@@ -2,11 +2,11 @@
   import firebase from "firebase";
   import { navigate } from "svelte-routing";
   import { locale, _ } from "svelte-i18n";
-  import Navbar from "../../components/Navbar.svelte";
-  import Dots from "../../svg/dots.svg";
+  import Navbar from "@components/Navbar.svelte";
+  // import Dots from "../../svg/dots.svg";
   import { auth } from "../../firebase";
-  import { APP_NAME } from "../../util/constants";
-  import { getProfileFromDb } from "../../util/db";
+  import { APP_NAME } from "@utils/constants";
+  import { getProfileFromDb } from "@utils/db";
 
   let email: string;
   let password: string;
@@ -59,7 +59,7 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <Dots class="auth__dots" />
+            <!-- <Dots class="auth__dots" /> -->
             <h4>{$_("auth.loginTitle", { values: { name: APP_NAME } })}</h4>
             <form
               action=""

@@ -22,18 +22,7 @@ input {
       font-weight: 600;
     }
 
-    input {
-      @include borderRadius;
-      @include focusShadow($primary);
-
-      padding: $padding $padding;
-      font-size: 1rem;
-      background-color: $dark-card-trans;
-      border: none;
-      color: $white;
-      font-family: "Exo", sans-serif;
-    }
-
+    input,
     textarea {
       @include borderRadius;
       @include focusShadow($primary);
@@ -44,9 +33,78 @@ input {
       border: none;
       color: $white;
       font-family: "Exo", sans-serif;
+      transition: background-color 250ms ease;
+
+      &:hover {
+        background-color: $dark-hover;
+      }
+    }
+
+    textarea {
       resize: vertical;
       &::-webkit-resizer {
         appearance: none;
+      }
+    }
+  }
+
+  &__checkbox {
+    margin: $padding 0;
+    padding-top: calc(1rem + 20px);
+
+    input {
+      position: absolute;
+      left: -100vw;
+    }
+
+    label {
+      position: relative;
+      display: block;
+      text-align: left;
+      padding: 8px 0 7px 61px;
+      cursor: pointer;
+      user-select: none;
+
+      &::before {
+        @include borderRadius;
+        content: "";
+        position: absolute;
+        width: 46px;
+        height: 46px;
+        left: 0;
+        top: 0;
+        background-color: $dark-card;
+        transition: background-color $transitionSpeed $easing;
+      }
+
+      &::after {
+        content: "✓";
+        position: absolute;
+        font-weight: 700;
+        left: 14px;
+        top: 2px;
+        font-size: 1.4rem;
+        color: $primary;
+        transform: scale(0);
+        transition: transform $transitionSpeed $easing;
+
+        // Add the gradient to the text on browsers that support it
+        @supports (-webkit-background-clip: text) {
+          color: transparent;
+          background: $gradient;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+
+      &:hover::before {
+        background-color: $dark-hover;
+      }
+    }
+
+    input:checked + label {
+      &::after {
+        transform: scale(1);
       }
     }
   }

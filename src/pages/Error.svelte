@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { APP_NAME } from "../util/constants";
+  import { APP_NAME } from "@utils/constants";
 </script>
 
 <svelte:head>

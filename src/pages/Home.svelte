@@ -1,10 +1,10 @@
 <script lang="ts">
   import { _ } from "svelte-i18n";
-  import Laptop from "../components/decorations/Laptop.svelte";
-  import Mobile from "../components/decorations/Mobile.svelte";
-  import Navbar from "../components/Navbar.svelte";
-  import Dots from "../svg/dots.svg";
-  import { APP_NAME } from "../util/constants";
+  import Laptop from "@components/decorations/Laptop.svelte";
+  import Mobile from "@components/decorations/Mobile.svelte";
+  import Navbar from "@components/Navbar.svelte";
+  // import Dots from "../svg/dots.svg";
+  import { APP_NAME } from "@utils/constants";
 
   let y: number;
 </script>
@@ -19,7 +19,7 @@
 
 <main>
   <section class="jumbotron">
-    <Dots class="jumbotron__dots" />
+    <!-- <Dots class="jumbotron__dots" /> -->
     <div class="container relative">
       <div style="transform: translateY({y / 5}px)" class="circle--gradient" />
       <div

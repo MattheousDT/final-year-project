@@ -3,6 +3,7 @@
     "home": "Home",
     "login": "Login",
     "signup": "Sign up",
+    "signOut": "Sign out",
     "expandMenu": "Expand menu",
     "collapseMenu": "Collapse menu",
     "settings": "Settings",
@@ -19,7 +20,8 @@
     "readMore": "Read more",
     "viewAll": "View all",
     "next": "Next",
-    "letsGo": "Let's go!"
+    "letsGo": "Let's go!",
+    "selectALanguage": "Select a language"
   },
   "auth": {
     "signupTitle": "Signup to {name}",
@@ -63,7 +65,8 @@
     "location": "Location",
     "bio": "Bio",
     "roles": "Roles",
-    "genres": "Genres"
+    "genres": "Genres",
+    "showFullName": "Show my full name on my profile"
   },
   "onboarding": {
     "heyName": "Hey {name}!",
@@ -74,11 +77,11 @@
     "bio": "Tell us a bit about yourself",
     "roles": "What roles can you play?",
     "genres": "What genres do you like?",
-    "50%": "Woah... We're halfway there!",
-    "75%": "It's the final countdown!",
     "finishPre": "Good news...",
     "finishTitle": "Your account is ready to go!",
     "finishBold": "You can now search through the available listings and start collaborating immediately!",
-    "finishParagraph": "Don’t forget, you can customise your profile further by clicking on your photo on the sidebar and clicking edit on your profile page. For example, you can add a portfolio of your previous projects to make your profile pop!"
+    "finishParagraph": "Don’t forget, you can customise your profile further by clicking on your photo on the sidebar and clicking edit on your profile page. For example, you can add a portfolio of your previous projects to make your profile pop!",
+    "half": "Woah... We're halfway there!",
+    "nearly": "It's the final countdown!"
   }
 }

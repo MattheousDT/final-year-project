@@ -1,6 +1,6 @@
 <script lang="ts">
   import { _, locale } from "svelte-i18n";
-  import type { ListingType, Role } from "../../util/enums";
+  import type { ListingType, Role } from "@utils/enums";
 
   export let type: ListingType;
   export let title: string;

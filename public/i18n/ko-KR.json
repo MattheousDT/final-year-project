@@ -5,7 +5,8 @@
     "signUpNow": "지금 등록하세요!",
     "viewAll": "모두보기",
     "letsGo": "가자!",
-    "next": "다음"
+    "next": "다음",
+    "selectALanguage": "언어 선택"
   },
   "home": {
     "subtitle": "공동 작업 할 같은 생각을 가진 뮤지션을 찾기위한 플랫폼",
@@ -19,7 +20,8 @@
     "collapseMenu": "메뉴 접기",
     "expandMenu": "메뉴 펼치기",
     "myProfile": "내 프로필",
-    "settings": "설정"
+    "settings": "설정",
+    "signOut": "로그 아웃"
   },
   "auth": {
     "email": "이메일",
@@ -63,11 +65,10 @@
     "location": "위치",
     "roles": "역할",
     "surname": "성",
-    "username": "사용자 이름"
+    "username": "사용자 이름",
+    "showFullName": "내 프로필에 내 이름 표시"
   },
   "onboarding": {
-    "50%": "와우 ... 반쯤 왔어요!",
-    "75%": "이제 마지막 카운트 다운이야!",
     "basicInformation": "기본 정보",
     "bio": "자신에 대해 조금 알려주세요",
     "finishBold": "이제 사용 가능한 목록을 검색하고 즉시 공동 작업을 시작할 수 있습니다!",
@@ -79,6 +80,8 @@
     "heyName": "안녕 {name}!",
     "musicalInformation": "뮤지컬 정보",
     "roles": "어떤 역할을 할 수 있습니까?",
-    "title": "프로필을 마무리합시다"
+    "title": "프로필을 마무리합시다",
+    "half": "와우 ... 반쯤 왔어요!",
+    "nearly": "이제 마지막 카운트 다운이야!"
   }
 }

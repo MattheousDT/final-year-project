@@ -1,7 +1,7 @@
 <script lang="ts">
   import { locale, _ } from "svelte-i18n";
   import { fade, fly } from "svelte/transition";
-  import { LANGUAGES } from "../util/constants";
+  import { LANGUAGES } from "@utils/constants";
 
   export let visibility: boolean;
 </script>
@@ -21,7 +21,7 @@
 >
   <div class="modal" role="dialog" transition:fly={{ y: -50 }}>
     <div class="header">
-      <h4>Select a language</h4>
+      <h4>{$_("ctas.selectALanguage")}</h4>
     </div>
     <div class="row">
       {#each Object.entries(LANGUAGES) as [key, val]}

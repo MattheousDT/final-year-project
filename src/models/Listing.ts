@@ -1,4 +1,4 @@
-import type { Genre, ListingType, Role } from "../util/enums";
+import type { Genre, ListingType, Role } from "@utils/enums";
 
 export class Listing {
   public id: string;

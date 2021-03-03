@@ -31,6 +31,10 @@
     padding: 9px $padding-lg;
   }
 
+  &--wide {
+    width: 100%;
+  }
+
   &--outline {
     @include focusShadow($white);
     background: none;

@@ -18,3 +18,8 @@ export const formatDate = (languageCode: string, date: Date) =>
     month: "long",
     day: "numeric",
   }).format(date);
+
+export const formatLargeNumber = (languageCode: string, num: number) =>
+  new Intl.NumberFormat(languageCode, {
+    notation: "compact",
+  }).format(num);

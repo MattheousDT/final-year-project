@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { mixDown } from "../util/audio";
+  import { mixDown } from "@utils/audio";
 
   const ctx = new window.AudioContext();
   const mix = ctx.createBufferSource();

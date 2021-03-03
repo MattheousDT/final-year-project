@@ -1,7 +1,10 @@
-import type { Genre, Role } from "../util/enums";
+import type { Genre, Role } from "@utils/enums";
 
 export class Profile {
   public username?: string;
+  public showFullName: boolean;
+  public image?: string;
+  public banner?: string;
   public forename: string;
   public surname: string;
   public dob: Date;
@@ -11,14 +14,19 @@ export class Profile {
   public roles: Role[];
   public genres: Genre[];
   public listings?: string[];
-  public lastOnline?: Date;
-  public dateRegistered?: Date;
+  public lastActive?: Date;
 
-  public getFullName = (): string => `${this.forename} ${this.surname}`;
+  get fullName(): string {
+    return `${this.forename} ${this.surname}`;
+  }
 
-  public getAge = (): number => {
+  get age(): number {
     const ageDifMs = Date.now() - this.dob.getTime();
     const ageDate = new Date(ageDifMs);
     return Math.abs(ageDate.getUTCFullYear() - 1970);
-  };
+  }
+
+  get displayName(): string {
+    return this.showFullName ? this.fullName : this.username;
+  }
 }
