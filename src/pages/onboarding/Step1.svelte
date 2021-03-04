@@ -42,7 +42,13 @@
     <div class="col-6">
       <div class="form__text">
         <label for="username">{$_("forms.username")}</label>
-        <input id="username" required type="text" bind:value={username} />
+        <input
+          id="username"
+          required
+          type="text"
+          bind:value={username}
+          autocomplete="nickname"
+        />
       </div>
     </div>
     <div class="col-6">
@@ -54,25 +60,49 @@
     <div class="col-6">
       <div class="form__text">
         <label for="forename">{$_("forms.forename")}</label>
-        <input id="forename" required type="text" bind:value={forename} />
+        <input
+          id="forename"
+          required
+          type="text"
+          bind:value={forename}
+          autocomplete="given-name"
+        />
       </div>
     </div>
     <div class="col-6">
       <div class="form__text">
         <label for="surname">{$_("forms.surname")}</label>
-        <input id="surname" required type="text" bind:value={surname} />
+        <input
+          id="surname"
+          required
+          type="text"
+          bind:value={surname}
+          autocomplete="family-name"
+        />
       </div>
     </div>
     <div class="col-6">
       <div class="form__text">
         <label for="dob">{$_("forms.dob")}</label>
-        <input id="dob" required type="date" bind:value={dob} />
+        <input
+          id="dob"
+          required
+          type="date"
+          bind:value={dob}
+          autocomplete="bday"
+        />
       </div>
     </div>
     <div class="col-6">
       <div class="form__text">
         <label for="city">{$_("forms.location")}</label>
-        <input id="city" required type="text" bind:value={location} />
+        <input
+          id="city"
+          required
+          type="text"
+          bind:value={location}
+          autocomplete="country"
+        />
       </div>
     </div>
     <div class="col-12">
@@ -84,7 +114,7 @@
 </form>
 
 <style lang="scss">
-  @import "../../scss/variables";
+  @import "variables";
 
   h4 {
     margin: $padding-lg * 2 0 0;

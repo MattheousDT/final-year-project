@@ -67,11 +67,21 @@
             >
               <div class="form__text">
                 <label for="email">{$_("auth.email")}</label>
-                <input id="email" type="email" bind:value={email} />
+                <input
+                  id="email"
+                  type="email"
+                  bind:value={email}
+                  autocomplete="email"
+                />
               </div>
               <div class="form__text">
                 <label for="password">{$_("auth.password")}</label>
-                <input id="password" type="password" bind:value={password} />
+                <input
+                  id="password"
+                  type="password"
+                  bind:value={password}
+                  autocomplete="off"
+                />
               </div>
               {#if error}
                 <small class="error">{error}</small>
@@ -168,7 +178,7 @@
     text-align: center;
     padding: $padding-lg * 4 0;
 
-    :global(&__dots) {
+    :global &__dots {
       position: absolute;
       left: -94px;
       top: -46px;

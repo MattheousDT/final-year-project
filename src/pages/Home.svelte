@@ -63,7 +63,7 @@
 
 <!-- <Footer /> -->
 <style lang="scss">
-  @import "../scss/variables";
+  @import "variables";
 
   .circle {
     &--gradient {
@@ -111,18 +111,18 @@
       margin-top: $padding-lg * 4;
     }
 
-    :global(&__laptop) {
+    :global &__laptop {
       max-width: 100%;
     }
 
-    :global(&__mobile) {
+    :global &__mobile {
       position: absolute !important;
       max-width: 30%;
       bottom: -90px;
       right: 15%;
     }
 
-    :global(&__dots) {
+    :global &__dots {
       position: absolute;
       left: 50%;
       top: 5px;

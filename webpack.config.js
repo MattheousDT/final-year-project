@@ -1,7 +1,9 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
-const sveltePreprocess = require("svelte-preprocess");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const { preprocess } = require("./svelte.config");
 
 const mode = process.env.NODE_ENV || "development";
 const prod = mode === "production";
@@ -9,7 +11,7 @@ const bundleName = prod ? "bundle" : "build/bundle";
 
 module.exports = {
   entry: {
-    [bundleName]: ["./src/main.ts"],
+    bundle: ["./src/main.ts"],
   },
   resolve: {
     alias: {
@@ -24,9 +26,12 @@ module.exports = {
     mainFields: ["svelte", "browser", "module", "main"],
   },
   output: {
-    path: path.join(__dirname, "/public/build"),
-    filename: "[name].js",
-    chunkFilename: "[name].[id].js",
+    path: prod
+      ? path.resolve(__dirname + "public", "dist")
+      : path.resolve(__dirname + "public", "dev"),
+    filename: prod ? "[name].[contenthash].js" : "[name].js",
+    chunkFilename: prod ? "[name].[id].[contenthash].js" : "[name].[id].js",
+    publicPath: prod ? "/dist/" : "/",
   },
   module: {
     rules: [
@@ -45,14 +50,7 @@ module.exports = {
             },
             emitCss: prod,
             hotReload: !prod,
-            preprocess: sveltePreprocess({
-              scss: {
-                renderSync: true,
-                includePaths: ["./src/scss"],
-              },
-              sourceMap: !prod,
-              defaults: { markup: "html", script: "typescript", style: "scss" },
-            }),
+            preprocess,
           },
         },
       },
@@ -61,7 +59,14 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           "css-loader",
-          "postcss-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                config: path.resolve(__dirname, "postcss.config.js"),
+              },
+            },
+          },
           "sass-loader",
         ],
       },
@@ -99,16 +104,21 @@ module.exports = {
   mode,
   plugins: [
     new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: "Some music app",
+      template: "src/template.html",
+      filename: prod ? "../index.html" : "index.html",
+    }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
+      filename: prod ? "[name].[contenthash].css" : "[name].css",
     }),
   ],
-  devtool: prod ? false : "source-map",
+  devtool: prod ? "hidden-source-map" : "source-map",
   devServer: {
     hot: true,
+    historyApiFallback: true,
     port: 5000,
-    historyApiFallback: {
-      index: "index.html",
-    },
+    contentBase: "public",
+    watchContentBase: true,
   },
 };

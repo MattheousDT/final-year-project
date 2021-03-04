@@ -16,7 +16,13 @@
 
   let authStateUnsubscribe: any;
   let stateLoading = true;
-  let documentLoading = true;
+
+  $: {
+    if ($user !== undefined) {
+      stateLoading = false;
+      console.log("loaded");
+    }
+  }
 
   onMount(() => {
     authStateUnsubscribe = auth.onAuthStateChanged(async (e) => {
@@ -27,11 +33,7 @@
         const data = await getProfileFromDb($user.uid);
         profile.set(data);
       }
-
-      stateLoading = false;
     });
-
-    if (document.readyState == "complete") documentLoading = false;
   });
 
   onDestroy(() => {
@@ -40,10 +42,10 @@
   });
 </script>
 
-{#if $i18nLoading && stateLoading && documentLoading}
+{#if $i18nLoading || stateLoading}
   <!-- spinner -->
 {:else}
-  <div id="root">
+  <div id="root" in:fade={{}}>
     <Router>
       <Route path="*">
         <Loadable loader={() => import("@pages/Error.svelte")} />
@@ -67,8 +69,15 @@
       <Route path="/dashboard/feed">
         <Loadable loader={() => import("@pages/dashboard/Feed.svelte")} />
       </Route>
-      <Route path="/dashboard/profile/:id">
-        <Loadable loader={() => import("@pages/dashboard/Profile.svelte")} />
+      <Route path="/dashboard/profile/:id" let:params>
+        <Loadable
+          loader={() => import("@pages/dashboard/Profile.svelte")}
+          id={params.id}
+        />
+      </Route>
+
+      <Route path="/admin/i18n">
+        <Loadable loader={() => import("@pages/admin/I18nEditor.svelte")} />
       </Route>
     </Router>
   </div>

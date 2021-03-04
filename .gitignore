@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
-public/build
+public/dist
+public/dev
 package-lock.json
 yarn.lock
 /src/config/*.json
+public/index.html

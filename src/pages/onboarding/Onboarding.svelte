@@ -137,7 +137,7 @@
     position: relative;
     height: 100%;
 
-    :global(&__dots) {
+    :global &__dots {
       position: absolute;
       left: -94px;
       top: -46px;
