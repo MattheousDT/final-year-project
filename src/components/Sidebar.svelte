@@ -39,6 +39,7 @@
   ];
 </script>
 
+<div class="under" class:expanded={$userPrefs.sidebarExpanded} />
 <aside class:expanded={$userPrefs.sidebarExpanded}>
   <a href="/" aria-label={$_("nav.home")} use:link>
     <img src="/static/logos/logo-small.svg" alt={$_("nav.home")} class="logo" />
@@ -108,12 +109,17 @@
 </aside>
 
 <style lang="scss">
-  @import "../scss/variables";
+  @import "variables";
 
   $transitionSpeed: 200ms;
   $easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   aside {
+    z-index: 1;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -121,8 +127,17 @@
     background-color: $dark-card;
     width: 102px;
     transition: width $transitionSpeed $easing;
-    margin-top: -86px;
 
+    &.expanded {
+      width: 354px;
+    }
+  }
+
+  .under {
+    height: 100%;
+    background-color: $dark-card;
+    width: 102px;
+    transition: width $transitionSpeed $easing;
     &.expanded {
       width: 354px;
     }

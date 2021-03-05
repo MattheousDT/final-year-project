@@ -2,35 +2,50 @@
   import { _ } from "svelte-i18n";
   import DashboardLayout from "@components/layouts/DashboardLayout.svelte";
   import Listing from "@components/listings/Listing.svelte";
-  import type { Profile } from "@models/Profile";
   import { profile } from "@stores/profile";
   import { user } from "@stores/user";
   import { APP_NAME } from "@utils/constants";
   import { ListingType, Role } from "@utils/enums";
+  import { getFollowCount, getFollowingCount } from "@utils/db";
+  import { onMount } from "svelte";
+  import TabBar from "@components/TabBar.svelte";
 
   export let id: string;
 
   let isMe: boolean;
   let editMode = false;
 
+  let followers = 0;
+  let following = 0;
+
+  let tab: string;
+
   $: {
     isMe = id === $user?.uid;
   }
 
+  onMount(async () => {
+    followers = await getFollowCount(id);
+    following = await getFollowingCount(id);
+  });
+
   let listings = [
     {
+      id: "brrrruhhhh227635",
       type: ListingType.original,
       title: "Bruh",
       subTitle: "bruh 2",
       tags: [Role.drums, Role.guitar, Role.mix],
     },
     {
+      id: "brrrruhhhh227635",
       type: ListingType.cover,
       title: "Learning to Live",
       subTitle: "Dream Theater",
       tags: [Role.keyboard, Role.vocals],
     },
     {
+      id: "brrrruhhhh227635",
       type: ListingType.cover,
       title: "Bruh",
       subTitle: "bruh 2",
@@ -53,9 +68,26 @@
       <div class="row">
         <div class="col-3" />
         <div class="col-9">
-          <ul>
-            <li>bruh</li>
-          </ul>
+          <TabBar
+            bind:selected={tab}
+            items={[
+              {
+                label: $_("listings.listings"),
+                value: "listings",
+                icon: "listing",
+              },
+              {
+                label: $_("profile.media"),
+                value: "media",
+                icon: "location",
+              },
+              {
+                label: $_("profile.about"),
+                value: "about",
+                icon: "location",
+              },
+            ]}
+          />
         </div>
       </div>
     </div>
@@ -72,35 +104,50 @@
           {:else}
             <h4 class="text--no-margin">{$profile?.username}</h4>
           {/if}
-          <p>
-            {$profile?.bio}
-          </p>
+          {#if editMode}
+            <div class="form__text-area">
+              <label for="bio">Bio</label>
+              <textarea name="bio" id="bio" value={$profile?.bio} rows={4} />
+            </div>
+          {:else}
+            <p>
+              {$profile?.bio}
+            </p>
+          {/if}
           {#if isMe}
             {#if editMode}
               <button
                 on:click={() => (editMode = false)}
                 class="button button--gradient button--wide"
               >
-                Save changes
+                {$_("ctas.saveChanges")}
               </button>
             {:else}
               <button
                 on:click={() => (editMode = true)}
                 class="button button--gradient button--wide"
               >
-                Edit profile
+                {$_("profile.edit")}
               </button>
             {/if}
           {:else}
             <button class="button button--gradient button--wide">
-              Follow
+              {$_("ctas.follow")}
             </button>
           {/if}
           <div class="stat">
             <img src="/static/icons/people.svg" alt="" />
-            <p>21 Followers</p>
+            <p class="text--clickable" on:click={() => (tab = "followers")}>
+              {$_("profile.followers", {
+                values: { number: followers },
+              })}
+            </p>
             <span class="dot" />
-            <p>72 Following</p>
+            <p class="text--clickable" on:click={() => (tab = "following")}>
+              {$_("profile.following", {
+                values: { number: following },
+              })}
+            </p>
           </div>
           <div class="stat">
             <img src="/static/icons/location.svg" alt="" />
@@ -110,9 +157,19 @@
       </div>
       <div class="col-9">
         <div class="row">
-          {#each listings as listing}
-            <div class="col-4"><Listing {...listing} /></div>
-          {/each}
+          {#if tab === "listings"}
+            {#each listings as listing}
+              <div class="col-4">
+                <Listing {...listing} />
+              </div>
+            {/each}
+          {:else if tab === "media"}
+            <h3>media tab</h3>
+          {:else if tab === "about"}
+            <h3>about tab</h3>
+          {:else}
+            <h3>{tab} tab</h3>
+          {/if}
         </div>
       </div>
     </div>
@@ -121,7 +178,7 @@
 
 <!-- <Footer /> -->
 <style lang="scss">
-  @import "../../scss/variables";
+  @import "variables";
 
   .banner {
     position: relative;
@@ -147,16 +204,6 @@
   .nav {
     background-color: $dark-card;
     margin-bottom: $padding-lg;
-
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-
-      li {
-        padding: $padding $padding + 5;
-      }
-    }
   }
 
   .side {

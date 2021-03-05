@@ -75,10 +75,6 @@
           id={params.id}
         />
       </Route>
-
-      <Route path="/admin/i18n">
-        <Loadable loader={() => import("@pages/admin/I18nEditor.svelte")} />
-      </Route>
     </Router>
   </div>
 {/if}

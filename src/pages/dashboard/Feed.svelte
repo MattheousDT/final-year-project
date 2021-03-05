@@ -7,24 +7,28 @@
 
   let listings = [
     {
+      id: "brrrruhhhh227635",
       type: ListingType.original,
       title: "Bruh",
       subTitle: "bruh 2",
       tags: [Role.drums, Role.guitar, Role.mix],
     },
     {
+      id: "brrrruhhhh227635",
       type: ListingType.cover,
       title: "Learning to Live",
       subTitle: "Dream Theater",
       tags: [Role.keyboard, Role.vocals],
     },
     {
+      id: "brrrruhhhh227635",
       type: ListingType.cover,
       title: "Bruh",
       subTitle: "bruh 2",
       tags: [Role.drums, Role.guitar, Role.mix],
     },
     {
+      id: "brrrruhhhh227635",
       type: ListingType.cover,
       title: "Bruh",
       subTitle: "bruh 2",
@@ -48,7 +52,7 @@
     </h1>
     <div class="row">
       {#each listings as listing}
-        <div class="col-12 col-lg-6 col-xl-4 col-xxl-3 col-xxxl-2">
+        <div class="col-12 col-md-6 col-xl-4 col-xxl-3 col-xxxl-2">
           <Listing {...listing} />
         </div>
       {/each}
@@ -58,7 +62,7 @@
 
 <!-- <Footer /> -->
 <style lang="scss">
-  @import "../../scss/variables";
+  @import "variables";
 
   h1 {
     button {

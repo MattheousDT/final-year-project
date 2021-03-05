@@ -12,7 +12,9 @@
     "readMore": "Leer más",
     "selectALanguage": "Selecciona un idioma",
     "signUpNow": "¡Regístrate ahora!",
-    "viewAll": "Ver todo"
+    "viewAll": "Ver todo",
+    "follow": "Seguir",
+    "saveChanges": "Guardar cambios"
   },
   "firebaseErrors": {
     "auth/email-already-exists": "El correo electrónico proporcionado ya está siendo utilizado por un usuario existente.",
@@ -83,5 +85,12 @@
     "mix": "Mezcla",
     "piano": "Piano",
     "vocals": "Voz"
+  },
+  "profile": {
+    "edit": "Editar perfil",
+    "followers": "{number} seguidores",
+    "following": "{number} siguiendo",
+    "about": "Sobre",
+    "media": "Medios de comunicación"
   }
 }

@@ -33,7 +33,6 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "watch": "webpack --watch",
     "serve": "sirv public -s",
     "dev": "webpack serve",
     "validate": "svelte-check"

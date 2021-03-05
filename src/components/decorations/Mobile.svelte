@@ -33,7 +33,7 @@
 </div>
 
 <style lang="scss">
-  @import "../../scss/variables";
+  @import "variables";
 
   .mobile {
     position: relative;

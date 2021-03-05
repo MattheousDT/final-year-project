@@ -1,4 +1,4 @@
-@import "./variables";
+@import "variables";
 
 *,
 *:before,
@@ -23,4 +23,20 @@ body {
 
 main {
   flex: 1;
+}
+
+::-webkit-scrollbar {
+  width: 13px;
+  height: 13px;
+}
+::-webkit-scrollbar-thumb {
+  background: $dark-card;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: $dark-hover;
+}
+::-webkit-scrollbar-track {
+  background: $dark-background;
+  border-radius: 0px;
 }

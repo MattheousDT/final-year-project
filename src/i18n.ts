@@ -8,6 +8,7 @@ import {
 import { get, Readable } from "svelte/store";
 
 import { setCookie, getCookie } from "@utils/cookie";
+import { LANGUAGES } from "@utils/constants";
 
 const INIT_OPTIONS = {
   fallbackLocale: "en",
@@ -18,15 +19,9 @@ const INIT_OPTIONS = {
 
 let currentLocale = null;
 
-register("en", () => fetch("/i18n/en.json").then((e) => e.json()));
-register("es", () => fetch("/i18n/es.json").then((e) => e.json()));
-register("ko-KR", () => fetch("/i18n/ko-KR.json").then((e) => e.json()));
-
-// TODO: Add/Remove Languages
-// register("pt-PT", () => import("./i18n/pt-PT.json"));
-// register("es", () => import("./i18n/es.json"));
-// register("ja", () => import("./i18n/ja.json"));
-// register("pl", () => import("./i18n/pl.json"));
+Object.keys(LANGUAGES).forEach((k) =>
+  register(k, () => fetch(`/i18n/${k}.json`).then((e) => e.json()))
+);
 
 $locale.subscribe((value) => {
   if (value == null) return;

@@ -77,7 +77,7 @@
 {/if}
 
 <style lang="scss">
-  @import "../scss/variables";
+  @import "variables";
 
   header {
     z-index: 1;
@@ -90,7 +90,7 @@
     justify-content: space-between;
     align-items: center;
 
-    @include media-down(md) {
+    @include media-down(xl) {
       padding: $padding;
     }
 

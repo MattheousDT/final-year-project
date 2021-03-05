@@ -40,7 +40,7 @@
 </div>
 
 <style lang="scss">
-  @import "../scss/variables";
+  @import "variables";
 
   .background {
     position: fixed;

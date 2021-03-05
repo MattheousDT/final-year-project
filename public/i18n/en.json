@@ -11,7 +11,7 @@
   },
   "home": {
     "title": "Music collaboration",
-    "title2": "Made simple.",
+    "title2": "made simple.",
     "subtitle": "The platform for finding like-minded musicians to collaborate"
   },
   "ctas": {
@@ -21,7 +21,9 @@
     "viewAll": "View all",
     "next": "Next",
     "letsGo": "Let's go!",
-    "selectALanguage": "Select a language"
+    "selectALanguage": "Select a language",
+    "saveChanges": "Save changes",
+    "follow": "Follow"
   },
   "auth": {
     "signupTitle": "Signup to {name}",
@@ -83,5 +85,12 @@
     "finishParagraph": "Don’t forget, you can customise your profile further by clicking on your photo on the sidebar and clicking edit on your profile page. For example, you can add a portfolio of your previous projects to make your profile pop!",
     "half": "Woah... We're halfway there!",
     "nearly": "It's the final countdown!"
+  },
+  "profile": {
+    "edit": "Edit profile",
+    "followers": "{number} Followers",
+    "following": "{number} Following",
+    "media": "Media",
+    "about": "About"
   }
 }

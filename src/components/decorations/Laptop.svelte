@@ -21,7 +21,8 @@
     height="472"
     viewBox="0 0 888 472"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg">
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       d="M64 30C64 13.4315 77.4315 0 94 0H793C809.569 0 823 13.4315 823 30V432C823 448.569 809.569 462 793 462H94C77.4315 462 64 448.569 64 432V30Z"
       fill="white"
@@ -35,7 +36,7 @@
 </div>
 
 <style lang="scss">
-  @import "../../scss/variables";
+  @import "variables";
 
   .laptop {
     display: inline-block;

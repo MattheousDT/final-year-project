@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@400;600;700&display=swap");
-@import "./variables";
+@import "variables";
 
 * {
   font-family: "Exo", sans-serif;
@@ -19,7 +19,6 @@ h3,
 h4,
 h5 {
   margin: 0 0 1.38rem;
-  font-family: "Exo", sans-serif;
   font-weight: 700;
   line-height: 1.13;
 
@@ -77,4 +76,11 @@ small {
 
 .text--no-margin {
   margin: 0;
+}
+
+.text--clickable {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 }

@@ -88,7 +88,7 @@
 
 <!-- <Footer /> -->
 <style lang="scss">
-  @import "../../scss/variables";
+  @import "variables";
 
   .circle {
     &--gradient {

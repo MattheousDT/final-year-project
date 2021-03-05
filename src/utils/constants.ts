@@ -10,8 +10,9 @@ export interface ILocale {
 export const LANGUAGES = {
   // General
   en: "English",
-  "ko-KR": "한국어",
   es: "Español",
+  ru: "русский",
+  "ko-KR": "한국어",
   //ja: "日本語",
   //pl: "Polski",
   // Region Specific

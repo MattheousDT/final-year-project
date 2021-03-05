@@ -1,26 +1,43 @@
 <script lang="ts">
   import { _, locale } from "svelte-i18n";
+  import { link } from "svelte-routing";
+
   import type { ListingType, Role } from "@utils/enums";
 
+  export let id: string;
   export let type: ListingType;
   export let title: string;
   export let subTitle: string;
   export let tags: Role[];
 </script>
 
-<div class="card">
-  <span class="ribbon">{$_(`listings.types.${type}`)}</span>
-  <h5>{title}</h5>
-  <p>{subTitle}</p>
-  <div class="tags">
-    {#each tags.sort((a, b) => a.localeCompare(b, $locale)) as tag}
-      <small class="tag">{$_(`roles.${tag}`)}</small>
-    {/each}
+<a href="/dashboard/listings/{id}" use:link>
+  <div class="card">
+    <span class="ribbon">{$_(`listings.types.${type}`)}</span>
+    <h5>{title}</h5>
+    <p>{subTitle}</p>
+    <div class="tags">
+      {#each tags.sort((a, b) => a.localeCompare(b, $locale)) as tag}
+        <small class="tag">{$_(`roles.${tag}`)}</small>
+      {/each}
+    </div>
   </div>
-</div>
+</a>
 
 <style lang="scss">
-  @import "../../scss/variables";
+  @import "variables";
+
+  a {
+    text-decoration: none;
+    outline: none;
+
+    &:focus .card {
+      @include shadow($primary);
+    }
+    .card {
+      @include hoverBackground;
+    }
+  }
 
   .card {
     position: relative;
@@ -33,7 +50,7 @@
   }
 
   p {
-    margin: 0 0 10px;
+    margin: 0;
   }
 
   .tags {
@@ -44,7 +61,10 @@
       padding: 2px 8px;
       background-color: $tertiary;
       border-radius: $radius-sm;
-      margin-right: 10px;
+      margin: 10px 10px 0 0;
+      &:last-of-type {
+        margin-right: 0;
+      }
     }
   }
 

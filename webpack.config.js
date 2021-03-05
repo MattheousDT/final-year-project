@@ -26,9 +26,7 @@ module.exports = {
     mainFields: ["svelte", "browser", "module", "main"],
   },
   output: {
-    path: prod
-      ? path.resolve(__dirname + "public", "dist")
-      : path.resolve(__dirname + "public", "dev"),
+    path: prod ? path.resolve("public", "dist") : path.resolve("public", "dev"),
     filename: prod ? "[name].[contenthash].js" : "[name].js",
     chunkFilename: prod ? "[name].[id].[contenthash].js" : "[name].[id].js",
     publicPath: prod ? "/dist/" : "/",

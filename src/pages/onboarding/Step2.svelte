@@ -62,7 +62,7 @@
 </form>
 
 <style lang="scss">
-  @import "../../scss/variables";
+  @import "variables";
 
   h4 {
     margin: $padding-lg * 2 0 0;

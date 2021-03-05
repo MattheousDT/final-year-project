@@ -110,7 +110,7 @@
 
 <!-- <Footer /> -->
 <style lang="scss">
-  @import "../../scss/_variables.scss";
+  @import "variables";
 
   h4 {
     margin: $padding-lg * 2 0 $padding-lg;
