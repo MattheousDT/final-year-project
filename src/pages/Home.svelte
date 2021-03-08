@@ -5,8 +5,15 @@
   import Navbar from "@components/Navbar.svelte";
   // import Dots from "../svg/dots.svg";
   import { APP_NAME } from "@utils/constants";
+  import Waveform from "@components/decorations/Waveform.svelte";
+  import { onMount } from "svelte";
+  import { logPageView } from "../firebase";
 
   let y: number;
+
+  onMount(() => {
+    logPageView();
+  });
 </script>
 
 <svelte:head>
@@ -43,6 +50,7 @@
             >
           </div>
           <div class="jumbotron__media">
+            <Waveform />
             <Laptop
               className="jumbotron__laptop"
               video="/static/test.mp4"

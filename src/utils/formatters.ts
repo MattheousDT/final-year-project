@@ -19,6 +19,12 @@ export const formatDate = (languageCode: string, date: Date) =>
     day: "numeric",
   }).format(date);
 
+export const formatTime = (languageCode: string, date: number) =>
+  new Intl.RelativeTimeFormat(languageCode, {}).format(
+    date - Date.now(),
+    "minute"
+  );
+
 export const formatLargeNumber = (languageCode: string, num: number) =>
   new Intl.NumberFormat(languageCode, {
     notation: "compact",

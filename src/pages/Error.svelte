@@ -1,5 +1,11 @@
 <script lang="ts">
   import { APP_NAME } from "@utils/constants";
+  import { onMount } from "svelte";
+  import { analytics } from "../firebase";
+
+  onMount(() => {
+    analytics.logEvent("exception", { key: "404" });
+  });
 </script>
 
 <svelte:head>

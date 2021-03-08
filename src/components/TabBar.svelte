@@ -2,7 +2,8 @@
   import type ITabItem from "@models/ITabItem";
 
   export let items: ITabItem[];
-  export let selected = items[0].value;
+  export let defaultTabIndex = 0;
+  export let selected = items[defaultTabIndex].value;
 </script>
 
 <div class="tabbar">
@@ -13,7 +14,7 @@
       value={item.value}
       bind:group={selected}
     />
-    <label for={item.value}>
+    <label for={item.value} class:flex={item.flex}>
       {#if item.icon}
         <img src="/static/icons/{item.icon}.svg" alt="" />
       {/if}
@@ -34,8 +35,13 @@
     display: flex;
     position: relative;
     align-items: center;
+    justify-content: center;
     padding: $padding $padding + 5 $padding $padding;
     cursor: pointer;
+
+    &.flex {
+      flex: 1;
+    }
 
     &::after {
       content: "";
@@ -50,6 +56,8 @@
   }
 
   img {
+    height: 36px;
+    width: 36px;
     margin-right: 10px;
   }
 

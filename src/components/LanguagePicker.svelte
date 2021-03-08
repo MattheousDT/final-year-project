@@ -1,27 +1,31 @@
 <script lang="ts">
   import { locale, _ } from "svelte-i18n";
-  import { fade, fly } from "svelte/transition";
+  import { fade, scale } from "svelte/transition";
   import { LANGUAGES } from "@utils/constants";
 
   export let visibility: boolean;
 </script>
 
-<svelte:head
-  ><style>
+<svelte:head>
+  <style>
     body {
       overflow: hidden;
     }
-  </style></svelte:head
->
+  </style>
+</svelte:head>
 
 <div
   class="background"
   on:click|self={() => (visibility = false)}
-  transition:fade={{}}
+  transition:fade={{ duration: 250 }}
 >
-  <div class="modal" role="dialog" transition:fly={{ y: -50 }}>
+  <div
+    class="modal"
+    role="dialog"
+    transition:scale={{ start: 0.8, duration: 250 }}
+  >
     <div class="header">
-      <h4>{$_("ctas.selectALanguage")}</h4>
+      <h4 class="text--no-margin">{$_("ctas.selectALanguage")}</h4>
     </div>
     <div class="row">
       {#each Object.entries(LANGUAGES) as [key, val]}
@@ -68,10 +72,6 @@
     padding-bottom: $padding-lg;
     border-bottom: $dark-border 3px solid;
     margin-bottom: $padding-lg;
-
-    h4 {
-      margin: 0;
-    }
   }
 
   button {

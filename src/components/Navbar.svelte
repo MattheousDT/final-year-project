@@ -3,10 +3,9 @@
   import { locale, _ } from "svelte-i18n";
 
   import { user } from "@stores/user";
-  import { LANGUAGES } from "@utils/constants";
-  import LanguagePicker from "./LanguagePicker.svelte";
-  import { auth } from "../firebase";
   import { profile } from "@stores/profile";
+  import LanguagePicker from "./LanguagePicker.svelte";
+  import { LANGUAGES } from "@utils/constants";
 
   export let hideLogo = false;
 
@@ -45,7 +44,6 @@
           <a
             href="/dashboard/feed"
             use:link
-            on:contextmenu={() => auth.signOut()}
             class="button button--blur button--image"
           >
             <img
@@ -58,13 +56,8 @@
         </li>
       {:else}
         <li>
-          <a class="button button--flat" href="/login" use:link>
-            {$_("nav.login")}
-          </a>
-        </li>
-        <li>
-          <a class="button button--lg button--blur" href="/signup" use:link>
-            {$_("nav.signup")}
+          <a class="button button--lg button--blur" href="/login" use:link>
+            {$_("ctas.signIn")}
           </a>
         </li>
       {/if}
@@ -84,7 +77,7 @@
   }
 
   nav {
-    height: 82px;
+    height: $navHeight;
     padding: $padding $padding-lg * 2;
     display: flex;
     justify-content: space-between;

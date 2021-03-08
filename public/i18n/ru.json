@@ -1,9 +1,7 @@
 {
   "auth": {
     "email": "Электронное письмо",
-    "loginTitle": "Войдите в {имя}",
-    "password": "Пароль",
-    "signupTitle": "Зарегистрируйтесь на {name}"
+    "password": "Пароль"
   },
   "ctas": {
     "letsGo": "Погнали!",
@@ -12,7 +10,14 @@
     "readMore": "Прочитайте больше",
     "selectALanguage": "Выберите язык",
     "signUpNow": "Войти Сейчас!",
-    "viewAll": "Посмотреть все"
+    "viewAll": "Посмотреть все",
+    "follow": "Следовать",
+    "saveChanges": "Сохранить изменения",
+    "signIn": "Войти",
+    "signOut": "выход",
+    "signUp": "Подписаться",
+    "unfollow": "Отписаться",
+    "signInWithGoogle": "Войти через Google"
   },
   "firebaseErrors": {
     "auth/email-already-exists": "Предоставленный адрес электронной почты уже используется существующим пользователем.",
@@ -21,7 +26,9 @@
     "auth/session-cookie-revoked": "Файл cookie сеанса пользователя отозван.",
     "auth/too-many-requests": "Вы делаете слишком много запросов. \nПопробуйте позже.",
     "auth/user-not-found": "На этот адрес электронной почты не зарегистрировано ни одного пользователя.",
-    "auth/wrong-password": "Вы ввели неправильный пароль для этой учетной записи."
+    "auth/wrong-password": "Вы ввели неправильный пароль для этой учетной записи.",
+    "auth/popup-closed-by-user": "Всплывающее окно входа неожиданно закрылось",
+    "auth/weak-password": "Введенный пароль слишком слабый"
   },
   "forms": {
     "bio": "Био",
@@ -46,17 +53,19 @@
     "types": {
       "cover": "Крышка",
       "original": "Оригинал"
-    }
+    },
+    "collaborators": "Соавторы",
+    "description": "Описание",
+    "details": "Подробности",
+    "discussion": "Обсуждение",
+    "files": "Файлы"
   },
   "nav": {
     "collapseMenu": "Свернуть меню",
     "expandMenu": "Развернуть меню",
     "home": "Дома",
-    "login": "Авторизоваться",
     "myProfile": "Мой профиль",
-    "settings": "Настройки",
-    "signOut": "выход",
-    "signup": "Подписаться"
+    "settings": "Настройки"
   },
   "onboarding": {
     "basicInformation": "Основная информация",
@@ -83,5 +92,19 @@
     "mix": "Смешивание",
     "piano": "Пианино",
     "vocals": "Вокал"
+  },
+  "chat": {
+    "messageBox": "Окно сообщения чата",
+    "placeholder": "Введите сообщение",
+    "send": "Отправить сообщение"
+  },
+  "profile": {
+    "about": "О",
+    "edit": "Редактировать профиль",
+    "followers": "Подписчики",
+    "following": "Следующий",
+    "media": "Средства массовой информации",
+    "numberOfFollowers": "{number} подписчиков",
+    "numberOfFollowing": "{number} подписок"
   }
 }

@@ -1,9 +1,7 @@
 {
   "auth": {
     "email": "Correo electrónico",
-    "loginTitle": "Iniciar sesión en {name}",
-    "password": "Contraseña",
-    "signupTitle": "Regístrese en {name}"
+    "password": "Contraseña"
   },
   "ctas": {
     "letsGo": "¡Vamos!",
@@ -14,7 +12,12 @@
     "signUpNow": "¡Regístrate ahora!",
     "viewAll": "Ver todo",
     "follow": "Seguir",
-    "saveChanges": "Guardar cambios"
+    "saveChanges": "Guardar cambios",
+    "signIn": "Iniciar sesión",
+    "signOut": "desconectar",
+    "signUp": "Inscribirse",
+    "unfollow": "Dejar de seguir",
+    "signInWithGoogle": "Inicia sesión con Google"
   },
   "firebaseErrors": {
     "auth/email-already-exists": "El correo electrónico proporcionado ya está siendo utilizado por un usuario existente.",
@@ -23,7 +26,9 @@
     "auth/session-cookie-revoked": "La cookie de sesión de usuario ha sido revocada.",
     "auth/too-many-requests": "Estás haciendo demasiadas solicitudes. \nVuelve a intentarlo más tarde.",
     "auth/user-not-found": "No hay ningún usuario registrado con este correo electrónico.",
-    "auth/wrong-password": "Ingresó la contraseña incorrecta para esta cuenta."
+    "auth/wrong-password": "Ingresó la contraseña incorrecta para esta cuenta.",
+    "auth/weak-password": "La contraseña ingresada es demasiado débil",
+    "auth/popup-closed-by-user": "La ventana emergente de inicio de sesión se cerró inesperadamente"
   },
   "forms": {
     "bio": "Bio",
@@ -48,17 +53,19 @@
     "types": {
       "cover": "Cubrir",
       "original": "Original"
-    }
+    },
+    "collaborators": "Colaboradores",
+    "description": "Descripción",
+    "details": "Detalles",
+    "discussion": "Discusión",
+    "files": "Archivos"
   },
   "nav": {
     "collapseMenu": "Contraer menú",
     "expandMenu": "Expandir el menú",
     "home": "Hogar",
-    "login": "Acceso",
     "myProfile": "Mi perfil",
-    "settings": "Ajustes",
-    "signOut": "Desconectar",
-    "signup": "Inscribirse"
+    "settings": "Ajustes"
   },
   "onboarding": {
     "basicInformation": "Información básica",
@@ -88,9 +95,16 @@
   },
   "profile": {
     "edit": "Editar perfil",
-    "followers": "{number} seguidores",
-    "following": "{number} siguiendo",
     "about": "Sobre",
-    "media": "Medios de comunicación"
+    "media": "Medios de comunicación",
+    "numberOfFollowers": "{number} seguidores",
+    "numberOfFollowing": "{number} siguiendo",
+    "followers": "Seguidores",
+    "following": "Siguiente"
+  },
+  "chat": {
+    "messageBox": "Cuadro de mensaje de chat",
+    "placeholder": "Ingrese un mensaje",
+    "send": "Enviar mensaje"
   }
 }

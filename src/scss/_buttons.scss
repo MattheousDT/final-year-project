@@ -35,6 +35,15 @@
     width: 100%;
   }
 
+  &--circle-icon {
+    height: 66px;
+    width: 66px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   &--outline {
     @include focusShadow($white);
     background: none;
@@ -56,6 +65,11 @@
   &--grey {
     @include focusShadow($grey);
     background-color: $grey;
+  }
+
+  &--input {
+    @include focusShadow($primary);
+    background-color: $dark-card-trans;
   }
 
   &--flat {
@@ -86,6 +100,18 @@
     align-items: center;
     img {
       margin-right: 15px;
+    }
+  }
+
+  &--icon-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      margin-right: 15px;
+    }
+    p {
+      margin: 0;
     }
   }
 }

@@ -1,32 +1,81 @@
 <script lang="ts">
   import { _ } from "svelte-i18n";
+  import type { Follow } from "@models/Follow";
   import DashboardLayout from "@components/layouts/DashboardLayout.svelte";
   import Listing from "@components/listings/Listing.svelte";
   import { profile } from "@stores/profile";
   import { user } from "@stores/user";
   import { APP_NAME } from "@utils/constants";
   import { ListingType, Role } from "@utils/enums";
-  import { getFollowCount, getFollowingCount } from "@utils/db";
   import { onMount } from "svelte";
   import TabBar from "@components/TabBar.svelte";
+  import {
+    addFollow,
+    getFollowers,
+    getFollowing,
+    removeFollow,
+  } from "../../services/followService";
+  import {
+    getProfileById,
+    getProfilesById,
+  } from "../../services/profileService";
+  import type { Profile } from "@models/Profile";
 
   export let id: string;
 
   let isMe: boolean;
+  let currentProfile: Profile;
   let editMode = false;
 
-  let followers = 0;
-  let following = 0;
+  let followers: Follow[] = [];
+  let following: Follow[] = [];
+
+  let followerProfiles: Profile[] = null;
+  let followingProfiles: Profile[] = null;
 
   let tab: string;
 
+  const _getFollowerProfiles = async () => {
+    if (followers.length === 0) {
+      return (followerProfiles = []);
+    }
+
+    followerProfiles = await getProfilesById(followers.map((e) => e.follower));
+  };
+
+  const _getFollowingProfiles = async () => {
+    if (following.length === 0) {
+      return (followingProfiles = []);
+    }
+
+    followingProfiles = await getProfilesById(following.map((e) => e.followee));
+  };
+
   $: {
     isMe = id === $user?.uid;
+
+    if (!currentProfile) {
+      (async function () {
+        if (isMe) {
+          currentProfile = $profile;
+        } else {
+          currentProfile = await getProfileById(id);
+        }
+      })();
+    }
+
+    if (tab === "followers" && followerProfiles?.length != followers.length) {
+      _getFollowerProfiles();
+      console.log(followers);
+    }
+    if (tab === "following" && followingProfiles?.length != following.length) {
+      _getFollowingProfiles();
+    }
   }
 
   onMount(async () => {
-    followers = await getFollowCount(id);
-    following = await getFollowingCount(id);
+    followers = await getFollowers(id);
+    following = await getFollowing(id);
   });
 
   let listings = [
@@ -98,20 +147,25 @@
       <div class="col-3">
         <div class="side">
           <img class="profile-image" src={$user?.photoURL} alt="" />
-          {#if $profile?.showFullName}
-            <h4 class="text--no-margin">{$profile?.fullName}</h4>
-            <h5 class="text--sub text--normal">{$profile?.username}</h5>
+          {#if currentProfile?.showFullName}
+            <h4 class="text--no-margin">{currentProfile?.fullName}</h4>
+            <h5 class="text--sub text--normal">{currentProfile?.username}</h5>
           {:else}
-            <h4 class="text--no-margin">{$profile?.username}</h4>
+            <h4 class="text--no-margin">{currentProfile?.username}</h4>
           {/if}
           {#if editMode}
             <div class="form__text-area">
               <label for="bio">Bio</label>
-              <textarea name="bio" id="bio" value={$profile?.bio} rows={4} />
+              <textarea
+                name="bio"
+                id="bio"
+                value={currentProfile?.bio}
+                rows={4}
+              />
             </div>
           {:else}
             <p>
-              {$profile?.bio}
+              {currentProfile?.bio}
             </p>
           {/if}
           {#if isMe}
@@ -130,28 +184,40 @@
                 {$_("profile.edit")}
               </button>
             {/if}
+          {:else if followers.find((e) => e.follower === $user?.uid)}
+            <button
+              on:click={async () => {
+                await removeFollow(id, $user?.uid);
+              }}
+              class="button button--gradient button--wide"
+            >
+              {$_("ctas.unfollow")}
+            </button>
           {:else}
-            <button class="button button--gradient button--wide">
+            <button
+              on:click={() => addFollow(id, $user?.uid)}
+              class="button button--gradient button--wide"
+            >
               {$_("ctas.follow")}
             </button>
           {/if}
           <div class="stat">
             <img src="/static/icons/people.svg" alt="" />
             <p class="text--clickable" on:click={() => (tab = "followers")}>
-              {$_("profile.followers", {
-                values: { number: followers },
+              {$_("profile.numberOfFollowers", {
+                values: { number: followers.length },
               })}
             </p>
             <span class="dot" />
             <p class="text--clickable" on:click={() => (tab = "following")}>
-              {$_("profile.following", {
-                values: { number: following },
+              {$_("profile.numberOfFollowing", {
+                values: { number: following.length },
               })}
             </p>
           </div>
           <div class="stat">
             <img src="/static/icons/location.svg" alt="" />
-            <p>{$profile?.location}</p>
+            <p>{currentProfile?.location}</p>
           </div>
         </div>
       </div>
@@ -167,8 +233,12 @@
             <h3>media tab</h3>
           {:else if tab === "about"}
             <h3>about tab</h3>
-          {:else}
-            <h3>{tab} tab</h3>
+          {:else if tab === "followers"}
+            <h3>{$_("profile.followers")}</h3>
+            <pre>{JSON.stringify(followerProfiles, null, 2)}</pre>
+          {:else if tab === "following"}
+            <h3>{$_("profile.following")}</h3>
+            <pre>{JSON.stringify(followingProfiles, null, 2)}</pre>
           {/if}
         </div>
       </div>
@@ -182,7 +252,7 @@
 
   .banner {
     position: relative;
-    height: 336px;
+    height: 254px + $navHeight;
     width: 100%;
     background-image: $gradient;
     background-position: center;

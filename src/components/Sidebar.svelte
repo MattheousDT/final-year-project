@@ -32,7 +32,7 @@
       route: "/dashboard/settings",
     },
     {
-      name: $_("nav.signOut"),
+      name: $_("ctas.signOut"),
       icon: "signout",
       cb: () => auth.signOut().then(() => navigate("/")),
     },

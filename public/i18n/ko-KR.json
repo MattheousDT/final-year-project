@@ -8,7 +8,12 @@
     "next": "다음",
     "selectALanguage": "언어 선택",
     "follow": "따르다",
-    "saveChanges": "변경 사항을 저장하다"
+    "saveChanges": "변경 사항을 저장하다",
+    "signIn": "로그인",
+    "signOut": "로그 아웃",
+    "signUp": "가입하기",
+    "unfollow": "언 팔로우",
+    "signInWithGoogle": "Google로 로그인"
   },
   "home": {
     "subtitle": "공동 작업 할 같은 생각을 가진 뮤지션을 찾기위한 플랫폼",
@@ -17,19 +22,14 @@
   },
   "nav": {
     "home": "집",
-    "login": "로그인",
-    "signup": "가입하기",
     "collapseMenu": "메뉴 접기",
     "expandMenu": "메뉴 펼치기",
     "myProfile": "내 프로필",
-    "settings": "설정",
-    "signOut": "로그 아웃"
+    "settings": "설정"
   },
   "auth": {
     "email": "이메일",
-    "password": "암호",
-    "signupTitle": "{name}에 가입",
-    "loginTitle": "{name}에 로그인"
+    "password": "암호"
   },
   "listings": {
     "types": {
@@ -38,7 +38,12 @@
     },
     "collaborations": "협업",
     "myFeed": "나의 먹이",
-    "listings": "리스팅"
+    "listings": "리스팅",
+    "collaborators": "협력자",
+    "description": "기술",
+    "details": "세부",
+    "discussion": "토론",
+    "files": "파일"
   },
   "roles": {
     "bass": "베이스",
@@ -57,7 +62,9 @@
     "auth/session-cookie-revoked": "사용자 세션 쿠키가 취소되었습니다.",
     "auth/too-many-requests": "너무 많은 요청을하고 있습니다. \n나중에 다시 시도하십시오.",
     "auth/user-not-found": "이 이메일에 등록 된 사용자가 없습니다.",
-    "auth/wrong-password": "이 계정에 잘못된 비밀번호를 입력했습니다."
+    "auth/wrong-password": "이 계정에 잘못된 비밀번호를 입력했습니다.",
+    "auth/popup-closed-by-user": "로그인 팝업이 예기치 않게 닫혔습니다.",
+    "auth/weak-password": "입력 한 비밀번호가 너무 약합니다"
   },
   "forms": {
     "bio": "약력",
@@ -89,8 +96,15 @@
   "profile": {
     "about": "약",
     "edit": "프로필 수정",
-    "followers": "{number} 팔로워",
-    "following": "{number} 팔로 잉",
-    "media": "미디어"
+    "media": "미디어",
+    "numberOfFollowers": "{number} 팔로워",
+    "numberOfFollowing": "{number} 팔로 잉",
+    "followers": "추종자",
+    "following": "수행원"
+  },
+  "chat": {
+    "messageBox": "채팅 메시지 상자",
+    "placeholder": "메시지를 입력하세요",
+    "send": "문자 보내"
   }
 }

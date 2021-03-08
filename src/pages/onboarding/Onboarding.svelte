@@ -8,8 +8,8 @@
   import type { Genre, Role } from "@utils/enums";
   import { db } from "../../firebase";
   import { user } from "@stores/user";
-  import { getProfileFromDb } from "@utils/db";
   import { profile } from "@stores/profile";
+  import { getProfileById } from "../../services/profileService";
 
   let stage = 1;
 
@@ -40,7 +40,7 @@
           genres,
         })
         .then(async () => {
-          const data = await getProfileFromDb($user.uid);
+          const data = await getProfileById($user.uid);
           profile.set(data);
           stage = 4;
         });
@@ -49,7 +49,7 @@
 </script>
 
 <svelte:head>
-  <title>{$_("nav.signup")} | {APP_NAME}</title>
+  <title>{$_("ctas.signUp")} | {APP_NAME}</title>
 </svelte:head>
 
 <Navbar />

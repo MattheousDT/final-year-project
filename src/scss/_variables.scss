@@ -7,6 +7,7 @@ $primary: #e54cc9;
 $secondary: #a166e1;
 $tertiary: #5d6efc;
 $subtext: #959192;
+$accent: #d975b7;
 
 $error: #ff7a7a;
 
@@ -25,6 +26,8 @@ $padding-lg: $padding * 2;
 $radius: 10px;
 $radius-sm: $radius / 2;
 $radius-lg: $radius * 2;
+
+$navHeight: 82px;
 
 $transitionSpeed: 200ms;
 $easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);

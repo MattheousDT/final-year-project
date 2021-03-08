@@ -6,9 +6,9 @@
   import Loadable from "svelte-loadable";
 
   import { user } from "@stores/user";
-  import { auth } from "./firebase";
+  import { analytics, auth } from "./firebase";
   import { profile } from "@stores/profile";
-  import { getProfileFromDb } from "@utils/db";
+  import { getProfileById } from "./services/profileService";
   import { initI18n } from "./i18n";
   import "./firebase";
 
@@ -27,10 +27,13 @@
   onMount(() => {
     authStateUnsubscribe = auth.onAuthStateChanged(async (e) => {
       user.set(e);
+      if (e != null) {
+        analytics.setUserId(e.uid);
+      }
 
       // this could probably be better, oh well!
       if ($user) {
-        const data = await getProfileFromDb($user.uid);
+        const data = await getProfileById($user.uid);
         profile.set(data);
       }
     });
@@ -54,12 +57,10 @@
       <Route path="/">
         <Loadable loader={() => import("@pages/Home.svelte")} />
       </Route>
-      <Route path="/signup">
-        <Loadable loader={() => import("@pages/auth/Signup.svelte")} />
-      </Route>
       <Route path="/login">
-        <Loadable loader={() => import("@pages/auth/Login.svelte")} />
+        <Loadable loader={() => import("@pages/Login.svelte")} />
       </Route>
+
       <Route path="/onboarding">
         <Loadable
           loader={() => import("@pages/onboarding/Onboarding.svelte")}
@@ -72,6 +73,12 @@
       <Route path="/dashboard/profile/:id" let:params>
         <Loadable
           loader={() => import("@pages/dashboard/Profile.svelte")}
+          id={params.id}
+        />
+      </Route>
+      <Route path="/dashboard/listings/:id" let:params>
+        <Loadable
+          loader={() => import("@pages/dashboard/Listing.svelte")}
           id={params.id}
         />
       </Route>

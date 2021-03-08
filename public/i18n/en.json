@@ -1,9 +1,6 @@
 {
   "nav": {
     "home": "Home",
-    "login": "Login",
-    "signup": "Sign up",
-    "signOut": "Sign out",
     "expandMenu": "Expand menu",
     "collapseMenu": "Collapse menu",
     "settings": "Settings",
@@ -15,6 +12,9 @@
     "subtitle": "The platform for finding like-minded musicians to collaborate"
   },
   "ctas": {
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "signUp": "Sign up",
     "signUpNow": "Sign up now!",
     "moreInfo": "More info",
     "readMore": "Read more",
@@ -23,11 +23,11 @@
     "letsGo": "Let's go!",
     "selectALanguage": "Select a language",
     "saveChanges": "Save changes",
-    "follow": "Follow"
+    "follow": "Follow",
+    "unfollow": "Unfollow",
+    "signInWithGoogle": "Sign in with Google"
   },
   "auth": {
-    "signupTitle": "Signup to {name}",
-    "loginTitle": "Login to {name}",
     "email": "Email",
     "password": "Password"
   },
@@ -38,7 +38,12 @@
       "cover": "Cover",
       "original": "Original"
     },
-    "listings": "Listings"
+    "listings": "Listings",
+    "details": "Details",
+    "discussion": "Discussion",
+    "description": "Description",
+    "collaborators": "Collaborators",
+    "files": "Files"
   },
   "roles": {
     "drums": "Drums",
@@ -57,7 +62,9 @@
     "auth/too-many-requests": "You're making too many requests. Try again later.",
     "auth/session-cookie-expired": "The provided user session cookie is expired.",
     "auth/session-cookie-revoked": "The user session cookie has been revoked.",
-    "auth/internal-error": "The Authentication server encountered an unexpected error while trying to process the request."
+    "auth/internal-error": "The Authentication server encountered an unexpected error while trying to process the request.",
+    "auth/weak-password": "The password entered is too weak",
+    "auth/popup-closed-by-user": "The signin popup was unexpectedly closed"
   },
   "forms": {
     "username": "Username",
@@ -88,9 +95,17 @@
   },
   "profile": {
     "edit": "Edit profile",
-    "followers": "{number} Followers",
-    "following": "{number} Following",
     "media": "Media",
-    "about": "About"
+    "about": "About",
+    "numberOfFollowers": "{number} Followers",
+    "numberOfFollowing": "{number} Following",
+    "followers": "Followers",
+    "following": "Following"
+  },
+  "listing": {},
+  "chat": {
+    "messageBox": "Chat message box",
+    "placeholder": "Enter a message",
+    "send": "Send message"
   }
 }
