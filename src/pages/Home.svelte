@@ -1,15 +1,17 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { _ } from "svelte-i18n";
+  import { link } from "svelte-routing";
+
+  import StandardLayout from "@components/layouts/StandardLayout.svelte";
   import Laptop from "@components/decorations/Laptop.svelte";
   import Mobile from "@components/decorations/Mobile.svelte";
-  import Navbar from "@components/Navbar.svelte";
-  // import Dots from "../svg/dots.svg";
   import { APP_NAME } from "@utils/constants";
   import Waveform from "@components/decorations/Waveform.svelte";
-  import { onMount } from "svelte";
   import { logPageView } from "../firebase";
 
   let y: number;
+  let moreInfo: HTMLElement;
 
   onMount(() => {
     logPageView();
@@ -22,11 +24,9 @@
 
 <svelte:window bind:scrollY={y} />
 
-<Navbar />
-
-<main>
+<StandardLayout>
   <section class="jumbotron">
-    <!-- <Dots class="jumbotron__dots" /> -->
+    <img class="jumbotron__dots" src="/static/decorations/dots.svg" alt="" />
     <div class="container relative">
       <div style="transform: translateY({y / 5}px)" class="circle--gradient" />
       <div
@@ -42,12 +42,23 @@
           </h1>
           <h5 class="text--sub text--semi-bold">{$_("home.subtitle")}</h5>
           <div class="jumbotron__buttons">
-            <a href="/signup" class="button button--lg button--gradient"
-              >{$_("ctas.signUpNow")}</a
+            <a
+              use:link
+              href="/signup"
+              class="button button--lg button--gradient"
             >
-            <a href="/components" class="button button--lg button--grey"
-              >{$_("ctas.moreInfo")}</a
+              {$_("ctas.signUpNow")}
+            </a>
+            <button
+              on:click={() =>
+                moreInfo.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                })}
+              class="button button--lg button--grey"
             >
+              {$_("ctas.moreInfo")}
+            </button>
           </div>
           <div class="jumbotron__media">
             <Waveform />
@@ -66,10 +77,9 @@
       </div>
     </div>
   </section>
-</main>
-<footer />
+  <section bind:this={moreInfo} />
+</StandardLayout>
 
-<!-- <Footer /> -->
 <style lang="scss">
   @import "variables";
 
@@ -84,6 +94,11 @@
 
       top: -284px;
       right: -350px;
+
+      @include media-down(md) {
+        top: -360px;
+        right: -500px;
+      }
     }
 
     &--outline {
@@ -97,6 +112,10 @@
       top: 182px;
       left: -360px;
       transform: translateX(-100%);
+
+      @include media-down(md) {
+        top: 280px;
+      }
     }
   }
 
@@ -107,8 +126,16 @@
 
     &__buttons {
       padding-top: $padding-lg * 2;
+      @include media-down(sm) {
+        display: flex;
+        flex-direction: column;
+      }
       :last-child {
         margin-left: $padding;
+        @include media-down(sm) {
+          margin-left: 0;
+          margin-top: $padding;
+        }
       }
     }
 
@@ -130,7 +157,7 @@
       right: 15%;
     }
 
-    :global &__dots {
+    &__dots {
       position: absolute;
       left: 50%;
       top: 5px;

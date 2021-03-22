@@ -1,4 +1,5 @@
 <script lang="ts">
+  import StandardLayout from "@components/layouts/StandardLayout.svelte";
   import { APP_NAME } from "@utils/constants";
   import { onMount } from "svelte";
   import { analytics } from "../firebase";
@@ -12,4 +13,6 @@
   <title>Error | {APP_NAME}</title>
 </svelte:head>
 
-<h1>it's fucked</h1>
+<StandardLayout>
+  <h1>Error</h1>
+</StandardLayout>

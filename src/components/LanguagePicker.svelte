@@ -1,6 +1,12 @@
 <script lang="ts">
   import { locale, _ } from "svelte-i18n";
-  import { fade, scale } from "svelte/transition";
+  import { fade, fly } from "svelte/transition";
+  import {
+    bounceIn,
+    bounceInOut,
+    bounceOut,
+    elasticInOut,
+  } from "svelte/easing";
   import { LANGUAGES } from "@utils/constants";
 
   export let visibility: boolean;
@@ -22,14 +28,14 @@
   <div
     class="modal"
     role="dialog"
-    transition:scale={{ start: 0.8, duration: 250 }}
+    in:fly={{ y: -50, duration: 500, easing: bounceOut, opacity: 1 }}
   >
     <div class="header">
       <h4 class="text--no-margin">{$_("ctas.selectALanguage")}</h4>
     </div>
     <div class="row">
       {#each Object.entries(LANGUAGES) as [key, val]}
-        <div class="col-6">
+        <div class="col-12 col-sm-6">
           <button
             on:click={() => locale.set(key)}
             class:button--gradient={key === $locale}
@@ -65,6 +71,7 @@
     max-width: 794px;
     border-radius: $radius-lg;
     padding: 40px 40px 40px - $padding;
+    margin: 0 $padding;
     background-color: $dark-card;
   }
 

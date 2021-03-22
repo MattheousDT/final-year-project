@@ -1,0 +1,110 @@
+{
+  "auth": {
+    "email": "E-mailem",
+    "password": "Heslo"
+  },
+  "chat": {
+    "messageBox": "Chatová schránka",
+    "placeholder": "Zadejte zprávu",
+    "send": "Poslat zprávu"
+  },
+  "ctas": {
+    "follow": "Následovat",
+    "letsGo": "Pojďme!",
+    "moreInfo": "Více informací",
+    "next": "další",
+    "readMore": "Přečtěte si více",
+    "saveChanges": "Uložit změny",
+    "selectALanguage": "Vyberte jazyk",
+    "signIn": "Přihlásit se",
+    "signInWithGoogle": "Přihlaste se pomocí Google",
+    "signOut": "Odhlásit se",
+    "signUp": "Přihlásit se",
+    "signUpNow": "Zaregistrujte se hned teď!",
+    "unfollow": "Zrušit sledování",
+    "viewAll": "Zobrazit vše"
+  },
+  "firebaseErrors": {
+    "auth/email-already-exists": "Zadaný e-mail již používá existující uživatel.",
+    "auth/internal-error": "Při pokusu o zpracování požadavku došlo k neočekávané chybě ověřovacího serveru.",
+    "auth/popup-closed-by-user": "Přihlašovací vyskakovací okno bylo neočekávaně uzavřeno",
+    "auth/session-cookie-expired": "Platnost zadaného cookie relace uživatele vypršela.",
+    "auth/session-cookie-revoked": "Soubor cookie relace uživatele byl odvolán.",
+    "auth/too-many-requests": "Předkládáte příliš mnoho žádostí. \nZkuste to později znovu.",
+    "auth/user-not-found": "S tímto e-mailem není registrován žádný uživatel.",
+    "auth/weak-password": "Zadané heslo je příliš slabé",
+    "auth/wrong-password": "Pro tento účet jste zadali nesprávné heslo."
+  },
+  "forms": {
+    "bio": "Bio",
+    "dob": "Datum narození",
+    "forename": "Křestní jméno",
+    "genres": "Žánry",
+    "location": "Umístění",
+    "roles": "Role",
+    "showFullName": "Zobrazit mé celé jméno v mém profilu",
+    "surname": "Příjmení",
+    "username": "Uživatelské jméno"
+  },
+  "home": {
+    "subtitle": "Platforma pro hledání podobně smýšlejících hudebníků ke spolupráci",
+    "title": "Hudební spolupráce",
+    "title2": "jednoduché."
+  },
+  "listings": {
+    "collaborations": "Spolupráce",
+    "collaborators": "Spolupracovníci",
+    "description": "Popis",
+    "details": "Detaily",
+    "discussion": "Diskuse",
+    "files": "Soubory",
+    "listings": "Výpisy",
+    "myFeed": "Můj příspěvek",
+    "types": {
+      "cover": "Pokrýt",
+      "original": "Originál"
+    }
+  },
+  "nav": {
+    "collapseMenu": "Sbalit nabídku",
+    "expandMenu": "Rozbalte nabídku",
+    "home": "Domov",
+    "myProfile": "Můj profil",
+    "settings": "Nastavení"
+  },
+  "onboarding": {
+    "basicInformation": "Základní informace",
+    "bio": "Řekni nám něco o sobě",
+    "finishBold": "Nyní můžete prohledávat dostupné výpisy a okamžitě začít spolupracovat!",
+    "finishParagraph": "Nezapomeňte, že svůj profil můžete dále přizpůsobit kliknutím na svou fotku v postranním panelu a kliknutím na Upravit na stránce vašeho profilu. \nMůžete například přidat portfolio svých předchozích projektů, aby se váš profil objevil!",
+    "finishPre": "Dobré zprávy...",
+    "finishTitle": "Váš účet je připraven k použití!",
+    "genres": "Jaké žánry máte rádi?",
+    "half": "Woah ... jsme v polovině cesty!",
+    "hey": "Ahoj!",
+    "heyName": "Ahoj, {name}!",
+    "musicalInformation": "Hudební informace",
+    "nearly": "Je to konečné odpočítávání!",
+    "roles": "Jaké role můžete hrát?",
+    "title": "Pojďme dokončit váš profil"
+  },
+  "profile": {
+    "about": "O",
+    "edit": "Upravit profil",
+    "followers": "Stoupenci",
+    "following": "Následující",
+    "media": "Média",
+    "numberOfFollowers": "Počet sledovatelů: {number}",
+    "numberOfFollowing": "{number} Sledováno"
+  },
+  "roles": {
+    "bass": "Bas",
+    "drums": "Bicí",
+    "guitar": "Kytara",
+    "keyboard": "Klávesnice",
+    "mastering": "Mastering",
+    "mix": "Směs",
+    "piano": "Klavír",
+    "vocals": "Zpěv"
+  }
+}

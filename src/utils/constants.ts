@@ -9,6 +9,7 @@ export interface ILocale {
 
 export const LANGUAGES = {
   // General
+  cs: "čeština",
   en: "English",
   es: "Español",
   ru: "русский",

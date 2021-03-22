@@ -39,7 +39,7 @@
           <img src="/static/icons/globe.svg" alt="" />{LANGUAGES[$locale]}
         </button>
       </li>
-      {#if $user}
+      {#if $user.data}
         <li>
           <a
             href="/dashboard/feed"
@@ -47,16 +47,18 @@
             class="button button--blur button--image"
           >
             <img
-              src={$user.photoURL ??
+              src={$user.data.photoURL ??
                 "https://www.streamscheme.com/wp-content/uploads/2020/09/PogU.png"}
               alt=""
             />
-            {$profile?.displayName || $user?.displayName || $user?.email}
+            {$profile.data?.displayName ||
+              $user.data.displayName ||
+              $user.data.email}
           </a>
         </li>
       {:else}
         <li>
-          <a class="button button--lg button--blur" href="/login" use:link>
+          <a class="button button--lg button--blur" href="/signin" use:link>
             {$_("ctas.signIn")}
           </a>
         </li>
@@ -77,7 +79,7 @@
   }
 
   nav {
-    height: $navHeight;
+    height: $nav-height;
     padding: $padding $padding-lg * 2;
     display: flex;
     justify-content: space-between;

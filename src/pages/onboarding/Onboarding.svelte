@@ -1,6 +1,6 @@
 <script lang="ts">
   import { _ } from "svelte-i18n";
-  import Navbar from "@components/Navbar.svelte";
+  import StandardLayout from "@components/layouts/StandardLayout.svelte";
   import { APP_NAME } from "@utils/constants";
   import Step1 from "./Step1.svelte";
   import Step2 from "./Step2.svelte";
@@ -26,9 +26,9 @@
   $: {
     if (stage === 3) {
       db.collection("users")
-        .doc($user.uid)
+        .doc($user.data.uid)
         .set({
-          id: $user.uid,
+          id: $user.data.uid,
           username,
           showFullName,
           forename,
@@ -40,7 +40,7 @@
           genres,
         })
         .then(async () => {
-          const data = await getProfileById($user.uid);
+          const data = await getProfileById($user.data.uid);
           profile.set(data);
           stage = 4;
         });
@@ -52,9 +52,7 @@
   <title>{$_("ctas.signUp")} | {APP_NAME}</title>
 </svelte:head>
 
-<Navbar />
-
-<main>
+<StandardLayout>
   <section class="setup">
     <div class="container container--small relative">
       <div class="circle--gradient" />
@@ -82,11 +80,8 @@
       </div>
     </div>
   </section>
-</main>
+</StandardLayout>
 
-<footer />
-
-<!-- <Footer /> -->
 <style lang="scss">
   @import "variables";
 
@@ -136,12 +131,5 @@
   .setup {
     position: relative;
     height: 100%;
-
-    :global &__dots {
-      position: absolute;
-      left: -94px;
-      top: -46px;
-      z-index: -1;
-    }
   }
 </style>

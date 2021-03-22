@@ -11,7 +11,7 @@
     Math.floor(Math.random() * (max - min + 1) + min);
 
   const updateHeightsInterval = setInterval(
-    () => (items = items.map((_, i) => randomIntFromInterval(50, 380))),
+    () => (items = items.map(() => randomIntFromInterval(50, 380))),
     speed
   );
 
@@ -28,7 +28,7 @@
   {#each items as i}
     <span
       class="wave"
-      style="height: {i}px; transition: height {speed}ms ease-out;"
+      style="height: {i}px; transition: height {speed}ms ease-in-out;"
     />
   {/each}
 </div>
@@ -44,7 +44,6 @@
     width: 100%;
     height: 380px;
     z-index: -5;
-    margin-top: -100px;
   }
 
   .wave {

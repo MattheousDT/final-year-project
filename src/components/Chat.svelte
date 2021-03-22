@@ -1,8 +1,10 @@
 <script lang="ts">
   import { afterUpdate, beforeUpdate, onMount } from "svelte";
+  import { fly } from "svelte/transition";
   import { _, locale } from "svelte-i18n";
 
   import { formatTime } from "@utils/formatters";
+  import { bounceIn, expoIn, expoOut } from "svelte/easing";
 
   interface IMessage {
     id: number;
@@ -87,7 +89,11 @@
 <div class="chat">
   <div class="messages" bind:this={div}>
     {#each messages as message (message.id)}
-      <div class="message" class:message--self={message.author === "me"}>
+      <div
+        class="message"
+        class:message--self={message.author === "me"}
+        in:fly={{ x: message.author === "me" ? 40 : -40, easing: expoOut }}
+      >
         {#if message.image}
           <img src={message.image} alt="" />
         {/if}
@@ -144,6 +150,7 @@
 
   .messages {
     overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .message {

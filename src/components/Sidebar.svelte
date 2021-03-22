@@ -46,20 +46,22 @@
   </a>
   <div class="profile">
     <ul>
-      <li class:active={location === `/dashboard/profile/${$user?.uid}`}>
+      <li class:active={location === `/dashboard/profile/${$user.data?.uid}`}>
         <a
           use:link
-          href="/dashboard/profile/{$user?.uid}"
+          href="/dashboard/profile/{$user.data?.uid}"
           class="nav-button nav-button--img"
           aria-label={$_("nav.myProfile")}
         >
           <img
-            src={$user?.photoURL ??
+            src={$user.data?.photoURL ??
               "https://www.streamscheme.com/wp-content/uploads/2020/09/PogU.png"}
             alt=""
           />
           <p>
-            {$profile?.displayName || $user?.displayName || $user?.email}
+            {$profile.data?.displayName ||
+              $user.data?.displayName ||
+              $user.data?.email}
           </p>
         </a>
       </li>

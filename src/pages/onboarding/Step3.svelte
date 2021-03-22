@@ -14,7 +14,7 @@
       {$_("onboarding.finishParagraph")}
     </p>
     <button
-      on:click={() => navigate("/dashboard/feed")}
+      on:click={() => navigate("/dashboard/feed", { replace: true })}
       class="button button--gradient button--lg"
     >
       {$_("ctas.letsGo")}

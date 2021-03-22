@@ -5,36 +5,26 @@
   import { onDestroy, onMount } from "svelte";
   import Loadable from "svelte-loadable";
 
-  import { user } from "@stores/user";
+  import { user, UserStoreStatus } from "@stores/user";
   import { analytics, auth } from "./firebase";
-  import { profile } from "@stores/profile";
+  import { profile, ProfileStoreStatus } from "@stores/profile";
   import { getProfileById } from "./services/profileService";
   import { initI18n } from "./i18n";
   import "./firebase";
+  import Spinner from "@components/Spinner.svelte";
 
   initI18n();
 
   let authStateUnsubscribe: any;
-  let stateLoading = true;
-
-  $: {
-    if ($user !== undefined) {
-      stateLoading = false;
-      console.log("loaded");
-    }
-  }
 
   onMount(() => {
     authStateUnsubscribe = auth.onAuthStateChanged(async (e) => {
-      user.set(e);
-      if (e != null) {
-        analytics.setUserId(e.uid);
-      }
+      user.set({ status: UserStoreStatus.LOADED, data: e });
 
       // this could probably be better, oh well!
-      if ($user) {
-        const data = await getProfileById($user.uid);
-        profile.set(data);
+      if ($user.data) {
+        const data = await getProfileById($user.data.uid);
+        profile.set({ status: ProfileStoreStatus.LOADED, data });
       }
     });
   });
@@ -45,8 +35,10 @@
   });
 </script>
 
-{#if $i18nLoading || stateLoading}
-  <!-- spinner -->
+{#if $i18nLoading || $user.status === UserStoreStatus.LOADING}
+  <div class="spinner-container" out:fade={{}}>
+    <Spinner />
+  </div>
 {:else}
   <div id="root" in:fade={{}}>
     <Router>
@@ -57,8 +49,11 @@
       <Route path="/">
         <Loadable loader={() => import("@pages/Home.svelte")} />
       </Route>
-      <Route path="/login">
-        <Loadable loader={() => import("@pages/Login.svelte")} />
+      <Route path="/signin">
+        <Loadable loader={() => import("@pages/Login.svelte")} mode="signin" />
+      </Route>
+      <Route path="/signup">
+        <Loadable loader={() => import("@pages/Login.svelte")} mode="signup" />
       </Route>
 
       <Route path="/onboarding">
@@ -85,3 +80,14 @@
     </Router>
   </div>
 {/if}
+
+<style>
+  .spinner-container {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+  }
+</style>

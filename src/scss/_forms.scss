@@ -5,8 +5,8 @@ input {
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
-    background-color: $dark-card-trans;
-    color: $white;
+    box-shadow: 0 0 0 30px $dark-card-trans inset !important;
+    -webkit-text-fill-color: $white;
   }
 }
 

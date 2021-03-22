@@ -5,12 +5,17 @@
   import { navigate } from "svelte-routing";
   import { getProfileById } from "@services/profileService";
   import TabBar from "./TabBar.svelte";
+  import { user } from "@stores/user";
+  import Spinner from "./Spinner.svelte";
+  import { onMount } from "svelte";
+  import { profile } from "@stores/profile";
 
   let email: string;
   let password: string;
 
-  let mode: "signin" | "signup";
+  export let mode: "signin" | "signup";
 
+  let loading = false;
   let error: string;
 
   let provider = new firebase.auth.GoogleAuthProvider();
@@ -19,24 +24,39 @@
     auth.languageCode = $locale;
   }
 
+  onMount(() => {
+    if ($user.data) {
+      navigate("/dashboard/feed", { replace: true });
+    }
+  });
+
   const handleEmailPassword = async () => {
+    error = null;
+    loading = true;
+
     if (mode === "signin") {
       try {
-        error = null;
         await auth.signInWithEmailAndPassword(email, password);
-        analytics.logEvent("login", { method: "email" });
-        navigate("/dashboard/feed");
+        const profile = await getProfileById($user.data?.uid);
+        if (profile) {
+          analytics.logEvent("login", { method: "google" });
+          navigate("/dashboard/feed");
+        } else {
+          analytics.logEvent("sign_up", { method: "google" });
+          navigate("/onboarding");
+        }
       } catch (err) {
         error = $_(`firebaseErrors.${err.code}`);
+        loading = false;
       }
     } else {
       try {
-        error = null;
         await auth.createUserWithEmailAndPassword(email, password);
         analytics.logEvent("sign_up", { method: "email" });
         navigate("/onboarding");
       } catch (err) {
         error = $_(`firebaseErrors.${err.code}`);
+        loading = false;
       }
     }
   };
@@ -61,6 +81,8 @@
 
 <form action="" on:submit|preventDefault={handleEmailPassword}>
   <div class="card">
+    <img class="dots" src="/static/decorations/dots.svg" alt="" />
+    <img class="dots" src="/static/decorations/dots.svg" alt="" />
     <TabBar
       bind:selected={mode}
       items={[
@@ -92,7 +114,7 @@
           id="password"
           type="password"
           bind:value={password}
-          autocomplete="current-password"
+          autocomplete={mode === "signin" ? "current-password" : "new-password"}
         />
       </div>
       {#if error}
@@ -100,8 +122,16 @@
       {/if}
     </div>
     <div class="buttons">
-      <button type="submit" class="button button--gradient">
-        {mode === "signin" ? $_("ctas.signIn") : $_("ctas.signUp")}
+      <button
+        type="submit"
+        class="button button--gradient"
+        class:button--icon-text={loading}
+      >
+        {#if loading}
+          <Spinner type="white" size={31} />
+        {:else}
+          {mode === "signin" ? $_("ctas.signIn") : $_("ctas.signUp")}
+        {/if}
       </button>
       <button
         on:click={signInWithGoogle}
@@ -117,6 +147,17 @@
 
 <style lang="scss">
   @import "variables";
+
+  .dots {
+    position: absolute;
+    left: -94px;
+    top: -46px;
+    z-index: -1;
+
+    &:last-of-type {
+      transform: translateY(100%) translateY(15px);
+    }
+  }
 
   .card {
     position: relative;

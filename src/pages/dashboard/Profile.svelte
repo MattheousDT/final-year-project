@@ -52,12 +52,12 @@
   };
 
   $: {
-    isMe = id === $user?.uid;
+    isMe = id === $user.data?.uid;
 
     if (!currentProfile) {
       (async function () {
         if (isMe) {
-          currentProfile = $profile;
+          currentProfile = $profile.data;
         } else {
           currentProfile = await getProfileById(id);
         }
@@ -146,7 +146,7 @@
     <div class="row">
       <div class="col-3">
         <div class="side">
-          <img class="profile-image" src={$user?.photoURL} alt="" />
+          <img class="profile-image" src={$user.data?.photoURL} alt="" />
           {#if currentProfile?.showFullName}
             <h4 class="text--no-margin">{currentProfile?.fullName}</h4>
             <h5 class="text--sub text--normal">{currentProfile?.username}</h5>
@@ -184,10 +184,10 @@
                 {$_("profile.edit")}
               </button>
             {/if}
-          {:else if followers.find((e) => e.follower === $user?.uid)}
+          {:else if followers.find((e) => e.follower === $user.data?.uid)}
             <button
               on:click={async () => {
-                await removeFollow(id, $user?.uid);
+                await removeFollow(id, $user.data?.uid);
               }}
               class="button button--gradient button--wide"
             >
@@ -195,7 +195,7 @@
             </button>
           {:else}
             <button
-              on:click={() => addFollow(id, $user?.uid)}
+              on:click={() => addFollow(id, $user.data?.uid)}
               class="button button--gradient button--wide"
             >
               {$_("ctas.follow")}
@@ -252,7 +252,7 @@
 
   .banner {
     position: relative;
-    height: 254px + $navHeight;
+    height: 254px + $nav-height;
     width: 100%;
     background-image: $gradient;
     background-position: center;

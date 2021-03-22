@@ -102,7 +102,6 @@
     "followers": "Followers",
     "following": "Following"
   },
-  "listing": {},
   "chat": {
     "messageBox": "Chat message box",
     "placeholder": "Enter a message",

@@ -1,11 +1,12 @@
 <script lang="ts">
   import { _ } from "svelte-i18n";
-  import Navbar from "@components/Navbar.svelte";
-  // import Dots from "../../svg/dots.svg";
+  import StandardLayout from "@components/layouts/StandardLayout.svelte";
   import { APP_NAME } from "@utils/constants";
-  import AuthModal from "@components/AuthModal.svelte";
+  import AuthCard from "@components/AuthCard.svelte";
   import { onMount } from "svelte";
   import { logPageView } from "../firebase";
+
+  export let mode: "signin" | "signup" = "signin";
 
   onMount(() => {
     logPageView();
@@ -13,28 +14,25 @@
 </script>
 
 <svelte:head>
-  <title>{$_("ctas.signIn")} | {APP_NAME}</title>
+  <title>
+    {mode === "signin" ? $_("ctas.signIn") : $_("ctas.signUp")} | {APP_NAME}
+  </title>
 </svelte:head>
 
-<Navbar />
-
-<main>
+<StandardLayout>
   <section class="auth">
     <div class="container relative">
       <div class="circle--gradient" />
       <div class="circle--outline" />
       <div class="row">
         <div class="col-12">
-          <AuthModal />
+          <AuthCard {mode} />
         </div>
       </div>
     </div>
   </section>
-</main>
+</StandardLayout>
 
-<footer />
-
-<!-- <Footer /> -->
 <style lang="scss">
   @import "variables";
   .circle {
@@ -68,12 +66,5 @@
     height: 100%;
     text-align: center;
     padding: $padding-lg * 4 0;
-
-    :global &__dots {
-      position: absolute;
-      left: -94px;
-      top: -46px;
-      z-index: -1;
-    }
   }
 </style>

@@ -13,8 +13,8 @@
   export let stage: number;
 
   const unsubscribe = user.subscribe((e) => {
-    if (e?.displayName) {
-      [forename, surname] = e.displayName.split(" ");
+    if (e.data?.displayName) {
+      [forename, surname] = e.data?.displayName.split(" ");
     }
   });
 
@@ -48,6 +48,7 @@
           type="text"
           bind:value={username}
           autocomplete="nickname"
+          pattern={`^[a-z0-9_-]{3, 15}$`}
         />
       </div>
     </div>

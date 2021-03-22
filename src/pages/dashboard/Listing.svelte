@@ -37,7 +37,7 @@
   });
 
   export let id: string;
-  let tab: string;
+  let tab = "details";
 </script>
 
 <svelte:head>
@@ -166,7 +166,7 @@
   }
 
   header {
-    padding-top: $navHeight;
+    padding-top: $nav-height;
     background-color: $dark-card;
 
     .back {
