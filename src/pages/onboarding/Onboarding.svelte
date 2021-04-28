@@ -8,7 +8,7 @@
   import type { Genre, Role } from "@utils/enums";
   import { db } from "../../firebase";
   import { user } from "@stores/user";
-  import { profile } from "@stores/profile";
+  import { profile, ProfileStoreStatus } from "@stores/profile";
   import { getProfileById } from "../../services/profileService";
 
   let stage = 1;
@@ -41,7 +41,7 @@
         })
         .then(async () => {
           const data = await getProfileById($user.data.uid);
-          profile.set(data);
+          profile.set({ status: ProfileStoreStatus.LOADED, data });
           stage = 4;
         });
     }

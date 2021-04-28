@@ -2,6 +2,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 
 const { preprocess } = require("./svelte.config");
 
@@ -103,6 +104,17 @@ module.exports = {
   mode,
   plugins: [
     new CleanWebpackPlugin(),
+    new webpack.DefinePlugin({
+      FIREBASE_CONFIG: JSON.stringify({
+        apiKey: process.env.API_KEY,
+        authDomain: process.env.AUTH_DOMAIN,
+        projectId: process.env.PROJECT_ID,
+        storageBucket: process.env.STORAGE_BUCKET,
+        messagingSenderId: process.env.MESSAGING_SENDER_ID,
+        appId: process.env.APP_ID,
+        measurementId: process.env.MEASUREMENT_ID,
+      }),
+    }),
     new HtmlWebpackPlugin({
       title: "Some music app",
       template: "src/template.html",

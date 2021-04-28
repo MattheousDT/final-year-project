@@ -3,22 +3,20 @@
   import { link } from "svelte-routing";
 
   import type { ListingType, Role } from "@utils/enums";
+  import Tag from "@components/Tag.svelte";
+  import type { IListing } from "@models/Listing";
 
-  export let id: string;
-  export let type: ListingType;
-  export let title: string;
-  export let subTitle: string;
-  export let tags: Role[];
+  export let listing: Partial<IListing>;
 </script>
 
-<a href="/dashboard/listings/{id}" use:link>
+<a href="/dashboard/listings/{listing.id}" use:link>
   <div class="card">
-    <span class="ribbon">{$_(`listings.types.${type}`)}</span>
-    <h5>{title}</h5>
-    <p>{subTitle}</p>
+    <span class="ribbon">{$_(`listings.types.${listing.type}`)}</span>
+    <h5>{listing.title}</h5>
+    <p>{listing.artist}</p>
     <div class="tags">
-      {#each tags.sort((a, b) => a.localeCompare(b, $locale)) as tag}
-        <small class="tag">{$_(`roles.${tag}`)}</small>
+      {#each listing.roles.sort((a, b) => a.localeCompare(b, $locale)) as tag}
+        <Tag>{$_(`roles.${tag}`)}</Tag>
       {/each}
     </div>
   </div>
@@ -56,16 +54,6 @@
   .tags {
     display: flex;
     flex-wrap: wrap;
-
-    .tag {
-      padding: 2px 8px;
-      background-color: $tertiary;
-      border-radius: $radius-sm;
-      margin: 10px 10px 0 0;
-      &:last-of-type {
-        margin-right: 0;
-      }
-    }
   }
 
   .ribbon {

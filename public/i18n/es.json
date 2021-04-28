@@ -17,7 +17,8 @@
     "signOut": "desconectar",
     "signUp": "Inscribirse",
     "unfollow": "Dejar de seguir",
-    "signInWithGoogle": "Inicia sesión con Google"
+    "signInWithGoogle": "Inicia sesión con Google",
+    "source": "Fuente"
   },
   "firebaseErrors": {
     "auth/email-already-exists": "El correo electrónico proporcionado ya está siendo utilizado por un usuario existente.",
@@ -58,7 +59,18 @@
     "description": "Descripción",
     "details": "Detalles",
     "discussion": "Discusión",
-    "files": "Archivos"
+    "files": "Archivos",
+    "artist": "Artista",
+    "bpm": "BPM",
+    "brief": "Resumen creativo",
+    "briefCaption": "La investigación muestra que las colaboraciones que describen tantos detalles de la manera más concisa posible, tienen una mayor probabilidad de éxito.",
+    "create": "Crea una lista",
+    "genres": "Género(s)",
+    "makeUnlisted": "¿Hacer la colaboración no listada?",
+    "roles": "Roles",
+    "softwareUsed": "Software y / o complementos utilizados",
+    "title": "Título",
+    "yourListings": "Tus anuncios"
   },
   "nav": {
     "collapseMenu": "Contraer menú",
@@ -106,5 +118,10 @@
     "messageBox": "Cuadro de mensaje de chat",
     "placeholder": "Ingrese un mensaje",
     "send": "Enviar mensaje"
+  },
+  "dashboard": {
+    "dashboard": "Tablero",
+    "quickActions": "Acciones rápidas",
+    "recommendedForYou": "Recomendado para ti"
   }
 }

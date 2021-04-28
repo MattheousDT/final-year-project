@@ -25,7 +25,8 @@
     "saveChanges": "Save changes",
     "follow": "Follow",
     "unfollow": "Unfollow",
-    "signInWithGoogle": "Sign in with Google"
+    "signInWithGoogle": "Sign in with Google",
+    "source": "Source"
   },
   "auth": {
     "email": "Email",
@@ -43,7 +44,18 @@
     "discussion": "Discussion",
     "description": "Description",
     "collaborators": "Collaborators",
-    "files": "Files"
+    "files": "Files",
+    "create": "Create a listing",
+    "briefCaption": "Research shows that collaborations that describe as much detail as concisely as possible, have a higher chance of succeeding.",
+    "brief": "Creative Brief",
+    "softwareUsed": "Software and/or plugins used",
+    "bpm": "BPM",
+    "roles": "Roles",
+    "genres": "Genre(s)",
+    "artist": "Artist",
+    "title": "Title",
+    "makeUnlisted": "Make collaboration unlisted?",
+    "yourListings": "Your Listings"
   },
   "roles": {
     "drums": "Drums",
@@ -106,5 +118,10 @@
     "messageBox": "Chat message box",
     "placeholder": "Enter a message",
     "send": "Send message"
+  },
+  "dashboard": {
+    "dashboard": "Dashboard",
+    "quickActions": "Quick actions",
+    "recommendedForYou": "Recommended for you"
   }
 }

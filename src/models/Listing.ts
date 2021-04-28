@@ -1,22 +1,40 @@
 import type { Genre, ListingType, Role } from "@utils/enums";
 
-export class Listing {
-  public id: string;
-  public author: string;
-  public title: string;
-  public artist?: string;
-  public description: string;
-  public type: ListingType;
-  public genres: Genre[];
-  public bpm: number;
-  public completion: number;
-  public softwareUsed: string[];
-  public collaborators: [
-    {
-      id: string;
-      roles: Role[];
-    }
-  ];
-  public createdAt: Date;
-  public updatedAt: Date;
+export interface IListing {
+  id: string;
+  author: string;
+  title: string;
+  artist?: string;
+  description: string;
+  type: ListingType;
+  genres: Genre[];
+  bpm: number;
+  completion: number;
+  softwareUsed?: string;
+  roles: Role[];
+  collaborators: [{ id: string; roles: Role[] }];
+  unlisted: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface IListingCreate
+  extends Omit<IListing, "id" | "completion" | "collaborators" | "createdAt" | "updatedAt"> {}
+
+export class Listing implements IListing {
+  id: string;
+  author: string;
+  title: string;
+  artist?: string;
+  description: string;
+  type: ListingType;
+  genres: Genre[];
+  bpm: number;
+  completion: number;
+  softwareUsed?: string;
+  roles: Role[];
+  collaborators: [{ id: string; roles: Role[] }];
+  unlisted: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }

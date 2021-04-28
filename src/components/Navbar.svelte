@@ -17,16 +17,8 @@
     <span>
       {#if !hideLogo}
         <a class="logo" href="/" use:link>
-          <img
-            src="/static/logos/logo.svg"
-            alt={$_("nav.home")}
-            class="logo--desktop"
-          />
-          <img
-            src="/static/logos/logo-small.svg"
-            alt={$_("nav.home")}
-            class="logo--mobile"
-          />
+          <img src="/static/logos/logo.svg" alt={$_("nav.home")} class="logo--desktop" />
+          <img src="/static/logos/logo-small.svg" alt={$_("nav.home")} class="logo--mobile" />
         </a>
       {/if}
     </span>
@@ -34,26 +26,20 @@
       <li>
         <button
           on:click={() => (langVisiblity = !langVisiblity)}
-          class="button button--flat button--icon"
+          class="button button--flat button--icon-text"
         >
           <img src="/static/icons/globe.svg" alt="" />{LANGUAGES[$locale]}
         </button>
       </li>
       {#if $user.data}
         <li>
-          <a
-            href="/dashboard/feed"
-            use:link
-            class="button button--blur button--image"
-          >
+          <a href="/dashboard/feed" use:link class="button button--blur button--image">
             <img
               src={$user.data.photoURL ??
                 "https://www.streamscheme.com/wp-content/uploads/2020/09/PogU.png"}
               alt=""
             />
-            {$profile.data?.displayName ||
-              $user.data.displayName ||
-              $user.data.email}
+            {$profile.data?.displayName || $user.data.displayName || $user.data.email}
           </a>
         </li>
       {:else}

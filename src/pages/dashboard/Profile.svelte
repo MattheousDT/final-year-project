@@ -15,11 +15,12 @@
     getFollowing,
     removeFollow,
   } from "../../services/followService";
-  import {
-    getProfileById,
-    getProfilesById,
-  } from "../../services/profileService";
+  import { getProfileById, getProfilesById } from "../../services/profileService";
   import type { Profile } from "@models/Profile";
+  import { default as ProfileCard } from "@components/Profile.svelte";
+  import { getListingsByUserId } from "@services/listingService";
+  import type { IListing } from "@models/Listing";
+  import Spinner from "@components/Spinner.svelte";
 
   export let id: string;
 
@@ -32,6 +33,8 @@
 
   let followerProfiles: Profile[] = null;
   let followingProfiles: Profile[] = null;
+
+  let listings: Promise<IListing[]> = new Promise(() => null);
 
   let tab: string;
 
@@ -51,10 +54,32 @@
     followingProfiles = await getProfilesById(following.map((e) => e.followee));
   };
 
+  const _follow = async () => {
+    await addFollow(currentProfile.id, $user.data?.uid);
+    getFollowers(id).then((e) => (followers = e));
+    followerProfiles = followerProfiles.concat($profile.data);
+  };
+
+  const _unfollow = async () => {
+    await removeFollow(currentProfile.id, $user.data?.uid);
+    getFollowers(id).then((e) => (followers = e));
+    followerProfiles.filter((x) => x.id !== $user.data?.uid);
+  };
+
   $: {
     isMe = id === $user.data?.uid;
 
-    if (!currentProfile) {
+    if (!currentProfile || currentProfile.id !== id) {
+      tab = "listings";
+
+      listings = getListingsByUserId(id);
+
+      followingProfiles = [];
+      followerProfiles = [];
+
+      getFollowers(id).then((e) => (followers = e));
+      getFollowing(id).then((e) => (following = e));
+
       (async function () {
         if (isMe) {
           currentProfile = $profile.data;
@@ -63,44 +88,16 @@
         }
       })();
     }
+  }
 
+  $: {
     if (tab === "followers" && followerProfiles?.length != followers.length) {
       _getFollowerProfiles();
-      console.log(followers);
     }
     if (tab === "following" && followingProfiles?.length != following.length) {
       _getFollowingProfiles();
     }
   }
-
-  onMount(async () => {
-    followers = await getFollowers(id);
-    following = await getFollowing(id);
-  });
-
-  let listings = [
-    {
-      id: "brrrruhhhh227635",
-      type: ListingType.original,
-      title: "Bruh",
-      subTitle: "bruh 2",
-      tags: [Role.drums, Role.guitar, Role.mix],
-    },
-    {
-      id: "brrrruhhhh227635",
-      type: ListingType.cover,
-      title: "Learning to Live",
-      subTitle: "Dream Theater",
-      tags: [Role.keyboard, Role.vocals],
-    },
-    {
-      id: "brrrruhhhh227635",
-      type: ListingType.cover,
-      title: "Bruh",
-      subTitle: "bruh 2",
-      tags: [Role.drums, Role.guitar, Role.mix],
-    },
-  ];
 </script>
 
 <svelte:head>
@@ -128,12 +125,12 @@
               {
                 label: $_("profile.media"),
                 value: "media",
-                icon: "location",
+                icon: "media",
               },
               {
                 label: $_("profile.about"),
                 value: "about",
-                icon: "location",
+                icon: "info",
               },
             ]}
           />
@@ -146,24 +143,50 @@
     <div class="row">
       <div class="col-3">
         <div class="side">
-          <img class="profile-image" src={$user.data?.photoURL} alt="" />
-          {#if currentProfile?.showFullName}
-            <h4 class="text--no-margin">{currentProfile?.fullName}</h4>
-            <h5 class="text--sub text--normal">{currentProfile?.username}</h5>
-          {:else}
-            <h4 class="text--no-margin">{currentProfile?.username}</h4>
-          {/if}
+          <img class="profile-image" src={currentProfile?.image} alt="" />
           {#if editMode}
-            <div class="form__text-area">
-              <label for="bio">Bio</label>
-              <textarea
-                name="bio"
-                id="bio"
-                value={currentProfile?.bio}
-                rows={4}
+            <div class="form__text">
+              <label for="username">{$_("forms.username")}</label>
+              <input
+                id="username"
+                required
+                type="text"
+                autocomplete="nickname"
+                pattern={`^[a-z0-9_-]{3, 15}$`}
+                value={currentProfile?.username}
               />
             </div>
+            <div class="form__text">
+              <label for="forename">{$_("forms.forename")}</label>
+              <input
+                id="forename"
+                required
+                type="text"
+                autocomplete="given-name"
+                value={currentProfile?.forename}
+              />
+            </div>
+            <div class="form__text">
+              <label for="surname">{$_("forms.surname")}</label>
+              <input
+                id="surname"
+                required
+                type="text"
+                autocomplete="family-name"
+                value={currentProfile?.surname}
+              />
+            </div>
+            <div class="form__text-area">
+              <label for="bio">{$_("forms.bio")}</label>
+              <textarea name="bio" id="bio" value={currentProfile?.bio} rows={4} />
+            </div>
           {:else}
+            {#if currentProfile?.showFullName}
+              <h4 class="text--no-margin">{currentProfile?.fullName}</h4>
+              <h5 class="text--sub text--normal">{currentProfile?.username}</h5>
+            {:else}
+              <h4 class="text--no-margin">{currentProfile?.username}</h4>
+            {/if}
             <p>
               {currentProfile?.bio}
             </p>
@@ -185,19 +208,11 @@
               </button>
             {/if}
           {:else if followers.find((e) => e.follower === $user.data?.uid)}
-            <button
-              on:click={async () => {
-                await removeFollow(id, $user.data?.uid);
-              }}
-              class="button button--gradient button--wide"
-            >
+            <button on:click={_unfollow} class="button button--gradient button--wide">
               {$_("ctas.unfollow")}
             </button>
           {:else}
-            <button
-              on:click={() => addFollow(id, $user.data?.uid)}
-              class="button button--gradient button--wide"
-            >
+            <button on:click={_follow} class="button button--gradient button--wide">
               {$_("ctas.follow")}
             </button>
           {/if}
@@ -224,21 +239,44 @@
       <div class="col-9">
         <div class="row">
           {#if tab === "listings"}
-            {#each listings as listing}
-              <div class="col-4">
-                <Listing {...listing} />
+            {#await listings}
+              <div class="col-12">
+                <div class="spinner">
+                  <Spinner />
+                </div>
               </div>
-            {/each}
+            {:then data}
+              {#each data as listing}
+                <div class="col-4">
+                  <Listing {listing} />
+                </div>
+              {/each}
+            {/await}
           {:else if tab === "media"}
             <h3>media tab</h3>
           {:else if tab === "about"}
             <h3>about tab</h3>
           {:else if tab === "followers"}
-            <h3>{$_("profile.followers")}</h3>
-            <pre>{JSON.stringify(followerProfiles, null, 2)}</pre>
+            <div class="col-12">
+              <h4>{$_("profile.followers")}</h4>
+            </div>
+            {#each followerProfiles as p}
+              <div class="col-12">
+                <ProfileCard
+                  profile={p}
+                  isFollowing={!!followingProfiles.find((x) => x.id === p.id)}
+                />
+              </div>
+            {/each}
           {:else if tab === "following"}
-            <h3>{$_("profile.following")}</h3>
-            <pre>{JSON.stringify(followingProfiles, null, 2)}</pre>
+            <div class="col-12">
+              <h4>{$_("profile.following")}</h4>
+            </div>
+            {#each followingProfiles as p}
+              <div class="col-12">
+                <ProfileCard profile={p} isFollowing={true} />
+              </div>
+            {/each}
           {/if}
         </div>
       </div>
@@ -249,6 +287,12 @@
 <!-- <Footer /> -->
 <style lang="scss">
   @import "variables";
+
+  .spinner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 
   .banner {
     position: relative;

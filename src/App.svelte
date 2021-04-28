@@ -57,25 +57,20 @@
       </Route>
 
       <Route path="/onboarding">
-        <Loadable
-          loader={() => import("@pages/onboarding/Onboarding.svelte")}
-        />
+        <Loadable loader={() => import("@pages/onboarding/Onboarding.svelte")} />
       </Route>
 
       <Route path="/dashboard/feed">
         <Loadable loader={() => import("@pages/dashboard/Feed.svelte")} />
       </Route>
       <Route path="/dashboard/profile/:id" let:params>
-        <Loadable
-          loader={() => import("@pages/dashboard/Profile.svelte")}
-          id={params.id}
-        />
+        <Loadable loader={() => import("@pages/dashboard/Profile.svelte")} id={params.id} />
+      </Route>
+      <Route path="/dashboard/listings/create">
+        <Loadable loader={() => import("@pages/dashboard/CreateListing.svelte")} />
       </Route>
       <Route path="/dashboard/listings/:id" let:params>
-        <Loadable
-          loader={() => import("@pages/dashboard/Listing.svelte")}
-          id={params.id}
-        />
+        <Loadable loader={() => import("@pages/dashboard/Listing.svelte")} id={params.id} />
       </Route>
     </Router>
   </div>

@@ -1,6 +1,7 @@
 import type { Genre, Role } from "@utils/enums";
 
 export class Profile {
+  public id: string;
   public username?: string;
   public showFullName: boolean;
   public image?: string;

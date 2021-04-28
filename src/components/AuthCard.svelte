@@ -79,7 +79,7 @@
   };
 </script>
 
-<form action="" on:submit|preventDefault={handleEmailPassword}>
+<form on:submit|preventDefault={handleEmailPassword}>
   <div class="card">
     <img class="dots" src="/static/decorations/dots.svg" alt="" />
     <img class="dots" src="/static/decorations/dots.svg" alt="" />
@@ -101,12 +101,7 @@
     <div class="inputs">
       <div class="form__text">
         <label for="email">{$_("auth.email")}</label>
-        <input
-          id="email"
-          type="email"
-          bind:value={email}
-          autocomplete="email"
-        />
+        <input id="email" type="email" bind:value={email} autocomplete="email" />
       </div>
       <div class="form__text">
         <label for="password">{$_("auth.password")}</label>
@@ -122,11 +117,7 @@
       {/if}
     </div>
     <div class="buttons">
-      <button
-        type="submit"
-        class="button button--gradient"
-        class:button--icon-text={loading}
-      >
+      <button type="submit" class="button button--gradient" class:button--icon-text={loading}>
         {#if loading}
           <Spinner type="white" size={31} />
         {:else}

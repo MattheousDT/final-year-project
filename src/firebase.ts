@@ -4,9 +4,8 @@ import "firebase/auth";
 // import "firebase/performance";
 import "firebase/analytics";
 
-import firebaseConfig from "./config/firebase.config.json";
-
-firebase.initializeApp(firebaseConfig);
+//@ts-ignore
+firebase.initializeApp(FIREBASE_CONFIG);
 
 export const auth = firebase.auth();
 export const db = firebase.firestore();

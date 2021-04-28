@@ -17,7 +17,7 @@
 
   $: routes = [
     {
-      name: $_("listings.myFeed"),
+      name: $_("nav.home"),
       icon: "home",
       route: "/dashboard/feed",
     },
@@ -59,9 +59,7 @@
             alt=""
           />
           <p>
-            {$profile.data?.displayName ||
-              $user.data?.displayName ||
-              $user.data?.email}
+            {$profile.data?.displayName || $user.data?.displayName || $user.data?.email}
           </p>
         </a>
       </li>
@@ -71,21 +69,12 @@
     {#each routes as r}
       <li class:active={location.startsWith(r.route)}>
         {#if r.cb}
-          <button
-            on:click={r.cb}
-            class="nav-button nav-button--icon"
-            aria-label={r.name}
-          >
+          <button on:click={r.cb} class="nav-button nav-button--icon" aria-label={r.name}>
             <img src="/static/icons/{r.icon}.svg" alt="" />
             <p>{r.name}</p>
           </button>
         {:else}
-          <a
-            use:link
-            href={r.route}
-            class="nav-button nav-button--icon"
-            aria-label={r.name}
-          >
+          <a use:link href={r.route} class="nav-button nav-button--icon" aria-label={r.name}>
             <img src="/static/icons/{r.icon}.svg" alt="" />
             <p>{r.name}</p>
           </a>
@@ -98,9 +87,7 @@
       <li on:click={updateSidebarState}>
         <button
           class="nav-button nav-button--icon"
-          aria-label={$userPrefs.sidebarExpanded
-            ? $_("nav.collapseMenu")
-            : $_("nav.expandMenu")}
+          aria-label={$userPrefs.sidebarExpanded ? $_("nav.collapseMenu") : $_("nav.expandMenu")}
         >
           <img src="/static/icons/arrows.svg" alt="" />
           <p>{$_("nav.collapseMenu")}</p>
