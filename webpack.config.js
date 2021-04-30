@@ -116,7 +116,7 @@ module.exports = {
       }),
     }),
     new HtmlWebpackPlugin({
-      title: "Some music app",
+      title: "OpenCollab",
       template: "src/template.html",
       filename: prod ? "../index.html" : "index.html",
     }),

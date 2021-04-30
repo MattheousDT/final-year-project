@@ -29,10 +29,7 @@
     <img class="jumbotron__dots" src="/static/decorations/dots.svg" alt="" />
     <div class="container relative">
       <div style="transform: translateY({y / 5}px)" class="circle--gradient" />
-      <div
-        style="transform: translateY(-{y * 0.3}px)"
-        class="circle--outline"
-      />
+      <div style="transform: translateY(-{y * 0.3}px)" class="circle--outline" />
       <div class="row">
         <div class="col-12">
           <h1>
@@ -42,11 +39,7 @@
           </h1>
           <h5 class="text--sub text--semi-bold">{$_("home.subtitle")}</h5>
           <div class="jumbotron__buttons">
-            <a
-              use:link
-              href="/signup"
-              class="button button--lg button--gradient"
-            >
+            <a use:link href="/signup" class="button button--lg button--gradient">
               {$_("ctas.signUpNow")}
             </a>
             <button
@@ -62,15 +55,11 @@
           </div>
           <div class="jumbotron__media">
             <Waveform />
-            <Laptop
-              className="jumbotron__laptop"
-              video="/static/test.mp4"
-              image="https://media.discordapp.net/attachments/379432139856412682/800140616805515264/unknown.png?width=1178&height=663"
-            />
+            <Laptop className="jumbotron__laptop" image="/static/laptop_image.jpg" />
             <Mobile
               style="transform: translateY(-{y * 0.2}px)"
               className="jumbotron__mobile"
-              video="/static/test2.webm"
+              image="/static/mobile_image.jpg"
             />
           </div>
         </div>

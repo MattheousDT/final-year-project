@@ -22,7 +22,8 @@
     "signUp": "Přihlásit se",
     "signUpNow": "Zaregistrujte se hned teď!",
     "unfollow": "Zrušit sledování",
-    "viewAll": "Zobrazit vše"
+    "viewAll": "Zobrazit vše",
+    "source": "Zdroj"
   },
   "firebaseErrors": {
     "auth/email-already-exists": "Zadaný e-mail již používá existující uživatel.",
@@ -63,7 +64,18 @@
     "types": {
       "cover": "Pokrýt",
       "original": "Originál"
-    }
+    },
+    "artist": "Umělec",
+    "bpm": "BPM",
+    "brief": "Creative Brief",
+    "briefCaption": "Výzkum ukazuje, že spolupráce, která co nejstručněji popisuje co nejpodrobněji, má větší šanci uspět.",
+    "create": "Vytvořte seznam",
+    "genres": "Žánr",
+    "makeUnlisted": "Nastavit spolupráci jako neveřejnou?",
+    "roles": "Role",
+    "softwareUsed": "Použitý software nebo pluginy",
+    "title": "Titul",
+    "yourListings": "Vaše výpisy"
   },
   "nav": {
     "collapseMenu": "Sbalit nabídku",
@@ -106,5 +118,10 @@
     "mix": "Směs",
     "piano": "Klavír",
     "vocals": "Zpěv"
+  },
+  "dashboard": {
+    "dashboard": "Přístrojová deska",
+    "quickActions": "Rychlé akce",
+    "recommendedForYou": "doporučeno pro tebe"
   }
 }

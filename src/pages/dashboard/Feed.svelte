@@ -2,7 +2,6 @@
   import { _ } from "svelte-i18n";
   import DashboardLayout from "@components/layouts/DashboardLayout.svelte";
   import Listing from "@components/listings/Listing.svelte";
-  import { ListingType, Role } from "@utils/enums";
   import { APP_NAME } from "@utils/constants";
   import QuickAction from "@components/QuickAction.svelte";
   import { navigate } from "svelte-routing";
@@ -11,37 +10,6 @@
   import { user } from "@stores/user";
   import type { IListing } from "@models/Listing";
   import Spinner from "@components/Spinner.svelte";
-
-  let dummyListings: Partial<IListing>[] = [
-    {
-      id: "brrrruhhhh227635",
-      type: ListingType.original,
-      title: "Bruh",
-      artist: "bruh 2",
-      roles: [Role.drums, Role.guitar, Role.mix],
-    },
-    {
-      id: "brrrruhhhh227635",
-      type: ListingType.cover,
-      title: "Learning to Live",
-      artist: "Dream Theater",
-      roles: [Role.keyboard, Role.vocals],
-    },
-    {
-      id: "brrrruhhhh227635",
-      type: ListingType.cover,
-      title: "Bruh",
-      artist: "bruh 2",
-      roles: [Role.drums, Role.guitar, Role.mix],
-    },
-    {
-      id: "brrrruhhhh227635",
-      type: ListingType.cover,
-      title: "Bruh",
-      artist: "bruh 2",
-      roles: [Role.drums, Role.guitar, Role.mix],
-    },
-  ];
 
   let myListings: Promise<IListing[]> = new Promise(() => null);
 
@@ -111,7 +79,7 @@
       {/await}
     </div>
     <!-- Recommended listings -->
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-12">
         <h2>
           {$_("dashboard.recommendedForYou")}
@@ -125,7 +93,7 @@
           <Listing {listing} />
         </div>
       {/each}
-    </div>
+    </div> -->
   </div>
 </DashboardLayout>
 

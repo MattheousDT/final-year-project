@@ -1,4 +1,4 @@
-export const APP_NAME = "SomeMusicApp™";
+export const APP_NAME = "OpenCollab";
 
 export interface ILocale {
   name: string;
